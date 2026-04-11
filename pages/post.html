@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <!--                                                                                       HEADER                                                                -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="imgs/logo_AI_GENERATED.png" alt="Logo" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <!--                             mostra si el usuario es logeado                                               -->
+            <li class="nav-item d-none">
+              <a class="nav-link" href="pages/perfil.html">Perfil</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Categorías
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="pages/categorias.html?categoria=">Cat1</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="pages/categorias.html?categoria=">Cat2</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar por palabras claves"
+              aria-label="Search" />
+          </form>
+          <div class="text-end">
+            <a href="pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
+            <a href="pages/login.html" class="btn btn-info" role="button">Log in</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="head" class="mt-5">
+    <div class="container row mx-auto mt-5">
+      <div class="col-6">
+        <img src="../imgs/placeholserNewsImg1.png" class="img-fluid">
+      </div>
+      <div class="col-6 d-flex justify-content-around align-items-center">
+        <div class="row">
+          <h1>
+            <p class="text-capitalized text-decoration-underline fs-1">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </h1>
+          <div class="d-flex gap-2 fs-5">
+            <a href="categorias.html?category=" class="link-info">Tag1</a>
+            <a href="categorias.html?category=" class="link-info">Tag2</a>
+          </div>
+          <div class="d-flex gap-2 fs-4">
+            <p class="fst-italic">by</p>
+            <a href="perfil.html?username=" class="link-info">John News</a>
+          </div>
+          <p class="text-body-secondary">69.69.4200</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <hr class="mt-5">
+
+
+  <section id="content">
+    <div class="mx-auto d-flex flex-column gap-3 justify-content-around align-items-center w-50">
+      <p class="fs-6 fw-light">
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+        the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+        release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+        like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <h4 class="fst-italic">Where does it come from?</h4>
+      <p class="fs-6 fw-light">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+        going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum
+        comes
+        from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+        written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The
+        first
+        line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+      <p class="fs-6 fw-light">
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+        1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original
+        form, accompanied by English versions from the 1914 translation by H. Rackham.
+      </p>
+      <h4 class="fst-italic">Why do we use it?</h4>
+      <p class="fs-6 fw-light">It is a long established fact that a reader will be distracted by the readable content
+        of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+        Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+        search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over
+        the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </p>
+      <h4 class="fst-italic">Where can I get some?</h4>
+      <p class="fs-6 fw-light">There are many variations of passages of Lorem Ipsum available, but the majority have
+        suffered alteration in some form, by injected humour, or randomised words which don't look even slightly
+        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
+        embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
+        predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of
+        over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
+        reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
+        non-characteristic words etc.
+      </p>
+      <img src="../imgs/placeholserNewsImg1.png" alt="img">
+    </div>
+  </section>
+
+  <hr class="mt-5">
+
+  <section id="comment">
+    <div class="container">
+      <form action="" method="post" class="d-flex flex-column gap-5">
+        <label for="comment" class="fs-1">Comparte tus opiniones</label>
+        <textarea name="comment" id="comment" class="form-control" rows="10"></textarea>
+        <button type="submit" class="btn btn-lg btn-outline-info">Enviar</button>
+      </form>
+
+
+      <h2 class="text-end mt-5">69 Comentarios</h2>
+      <div class="comments d-flex flex-column gap-2 border p-5 rounded">
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              I'm gay
+            </p>
+          </div>
+        </div>
+        <hr class="mb-5">
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              I'm gay
+            </p>
+          </div>
+        </div>
+        <hr class="mb-5">
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              I'm gay
+            </p>
+          </div>
+        </div>
+        <hr class="mb-5">
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              I'm gay
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--                                                                                       VOOTER                                                                -->
+  <footer class="mt-5">
+    <hr>
+    <p class="text-body-secondary text-center">@2026 Copyright Amangeldiuly Madi</p>
+  </footer>
+
+  <!--                                                                                       SCRIPTS                                                                -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+
+</html>
