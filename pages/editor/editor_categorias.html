@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <!--                                                                                       HEADER                                                                -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../../imgs/logo_AI_GENERATED.png" alt="Logo" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="../../index.html">Home</a>
+            </li>
+            <!--                             mostra si el usuario es logeado                                               -->
+            <li class="nav-item d-none">
+              <a class="nav-link" href="../../pages/perfil.html">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="editor_categorias.html" role="button" aria-expanded="false">
+                Categorías
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar por palabras claves"
+              aria-label="Search" />
+          </form>
+          <a href="../perfil.html" class="mx-2">
+            <img src="../../imgs/pfps/default-editor.png" alt="pfp" class="rounded-circle border border-2 border-danger"
+              style="width: 50px;">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <section id="categorias">
+    <div class="container mt-5">
+      <form action="" method="get" class="input-group rounded-pill">
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Seleccione una categoría</option>
+            <option value="1">Cat1</option>
+            <option value="2">Cat2</option>
+            <option value="3">Cat3</option>
+          </select>
+          <button class="btn btn-outline-info" type="submit">Buscar</button>
+          <button class="btn btn-outline-warning">Modificar la categoría</button>
+          <a class="btn btn-outline-danger">Eliminar la categoría</a>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Seleccione una etiqueta</option>
+            <option value="1">Tag1</option>
+            <option value="1">Tag1</option>
+            <option value="1">Tag1</option>
+          </select>
+          <button class="btn btn-outline-warning">Modificar la categoría</button>
+          <a class="btn btn-outline-danger">Eliminar la categoría</a>
+        </div>
+      </form>
+
+      <div class="categorias border mt-5">
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart-filled.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">70</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark-filled.svg" alt="bookmark">
+                  </figure>
+                  <p class="text-body-secondary">70</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img src="../../imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title"><strong>Title</strong></h5>
+                <hr>
+                <a href="../../pages/perfil.html?username=" class="link-info">John News</a>
+                <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+                <div class="d-flex gap-3">
+                  <figure><img role="button" width="25" src="../../imgs/svgs/heart.svg" alt="heart"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  <p class="text-body-secondary">69</p>
+                  <figure><img role="button" width="18" src="../../imgs/svgs/comment.svg" alt="comments"></figure>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+                <hr>
+                <a href="../../pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!--                                                                                       VOOTER                                                                -->
+  <footer class="mt-5">
+    <hr>
+    <p class="text-body-secondary text-center">@2026 Copyright Amangeldiuly Madi</p>
+  </footer>
+
+  <!--                                                                                       SCRIPTS                                                                -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+
+</html>

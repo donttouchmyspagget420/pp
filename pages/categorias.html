@@ -51,17 +51,23 @@
   <section id="categorias">
     <div class="container mt-5">
       <form action="" method="get" class="input-group rounded-pill">
-        <input type="search" value="cat1" class="form-control" placeholder="Buscar por categorias">
-        <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown"
-          aria-expanded="false"></button>
-        <button class="btn btn-outline-info" type="submit" class="form-control">Buscar</button>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">Cat1</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="#">Cat2</a></li>
-        </ul>
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Seleccione una categoría</option>
+            <option value="1">Cat1</option>
+            <option value="2">Cat2</option>
+            <option value="3">Cat3</option>
+          </select>
+          <button class="btn btn-outline-info" type="submit">Buscar</button>
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Seleccione una etiqueta</option>
+            <option value="1">Tag1</option>
+            <option value="1">Tag1</option>
+            <option value="1">Tag1</option>
+          </select>
+        </div>
       </form>
 
       <div class="categorias border mt-5">
