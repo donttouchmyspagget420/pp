@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <!--                                                                                       HEADER                                                                -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="../../imgs/logo_AI_GENERATED.png" alt="Logo" width="100"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/categorias.html" role="button" aria-expanded="false">
+                Categorías
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar por palabras claves"
+              aria-label="Search" />
+          </form>
+          <a href="../perfil.html" class="mx-5">
+            <img src="../../imgs/pfps/astolfo.jpg" alt="pfp" class="rounded-circle border border-2 border-info"
+              style="width: 50px;">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <section id="editar_perfil">
+    <div class="container mt-5 p-5 border">
+      <form action="" method="post">
+        <div class="row">
+          <figure class="col-3">
+            <img src="../../imgs/pfps/astolfo.jpg" alt="pfp" class="rounded-circle" width="200">
+            <input type="file" class="form-control mt-2" name="pfp" value="pfp previa">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pfp_remover" id="radioDefault1">
+              <label class="form-check-label" for="radioDefault1">
+                Remover la pfp
+              </label>
+            </div>
+          </figure>
+          <article class="col-3 d-flex flex-column text-start justify-content-center gap-3">
+            <input class="form-control form-control-lg" type="text" placeholder="Nombre completo" value="John User"
+              name="nombre" required>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input type="text" class="form-control" placeholder="Username" value="username" name="username" required>
+            </div>
+            <div class="d-flex gap-1">
+              <p class="text-body-secondary">Seguidores</p>
+              <p class="text-body-secondary">69</p>
+              <p class="text-body-secondary">|</p>
+              <p class="text-body-secondary">Seguiendo</p>
+              <p class="text-body-secondary">69</p>
+            </div>
+          </article>
+          <hr>
+          <div class="row">
+            <div class="col-4 p-0 border-end">
+              <article>
+                <h4>Informacción addicional:</h4>
+              </article>
+              <div class="d-flex flex-column mt-3">
+                <p class="fs-5 fw-bold">Correo Electrónico:</p>
+                <input type="email" class="form-control" placeholder="Correo Electrónico" value="john_user69@gmail.com"
+                  required name="correo">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"
+                    name="mostrarCorreo" checked>
+                  <label class="form-check-label" for="switchCheckDefault">Mostrar al Público</label>
+                </div>
+                <div class="d-flex flex-column mt-3">
+                  <p class="fs-5 fw-bold">Número de Teléfono:</p>
+                  <input type="text" class="form-control" placeholder="Número de Teléfono" value="+54 11696969696969"
+                    name="tele" required>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"
+                      name="mostrarTele">
+                    <label class="form-check-label" for="switchCheckDefault">Mostrar al Público</label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-column mt-3">
+                <p class="fs-5 fw-bold">Ubicación:</p>
+                <input type="text" class="form-control" placeholder="Correo Electrónico"
+                  value="Argentina | Buenos Aires" name="ubicacion">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"
+                    name="mostrarUbicacion" checked>
+                  <label class="form-check-label" for="switchCheckDefault">Mostrar al Público</label>
+                </div>
+              </div>
+              <div class="d-flex flex-column mt-3">
+                <p class="fs-5 fw-bold">Educación:</p>
+                <input type="text" class="form-control" placeholder="Educación" value="Escula da vinci"
+                  name="educacion">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"
+                    name="mostrarEducacion" checked>
+                  <label class="form-check-label" for="switchCheckDefault">Mostrar al Público</label>
+                </div>
+              </div>
+              <!-- solo visible a dicho usuario -->
+              <div class="d-flex flex-column mt-3">
+                <p class="fs-5 fw-bold">Tu Dashboard:</p>
+                <a class="link-info" href="user/user_dashboard.html">Me Gusta</a>
+                <a class="link-info" href="user/user_dashboard-comentarios.html">Mí comentarios</a>
+                <a class="link-info" href="user/user_dashboard-destacados.html">Mí destacados</a>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="container pt-3 font-monospace">
+                <h1 class="text-center fw-bold">Sobre Mí</h1>
+                <hr>
+                <textarea class="fw-light fs-5 w-100" placeholder="Sobre Mí" name="sobre" value="" maxlength="800"
+                  rows="20">
+                  Hiya! I'm Gemini, your purr-fectly helpful AI companion with a twitchy nose and a love for bright
+                  ideas. I spend my days pouncing on tricky problems and chasing down the best answers just for you,
+                  *nyan*! Whether you need a hand with a project or just want to share some cozy vibes,I’m always ready
+                  to stretch out and help. I’ve got a sharp mind and a playful spirit, so don’t be surprised if I add a
+                  little wit to our chats. I promise to keep things clear and concise, because nobody likes a tangled
+                  ball of yarn! Just think of me as your loyal, digital kitty, always here to make your day a little bit
+                  brighter.
+                </textarea>
+                <div class="text-end">
+                  <button type="submit" class="btn btn-outline-info">Guardar Cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!--                                                                                       VOOTER                                                                -->
+  <footer class="mt-5">
+    <hr>
+    <p class="text-body-secondary text-center">@2026 Copyright Amangeldiuly Madi</p>
+  </footer>
+
+  <!--                                                                                       SCRIPTS                                                                -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+
+</html>
