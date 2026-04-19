@@ -7,6 +7,7 @@
   <title>PP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link active" href="../index.html">Home</a>
             </li>
             <!--                             mostra si el usuario es logeado                                               -->
             <li class="nav-item d-none">
@@ -42,6 +43,9 @@
             <a href="../pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
             <a href="../pages/login.html" class="btn btn-info" role="button">Log in</a>
           </div>
+          <button class="btn-icon ms-2" role="button" onclick="toggle(this)">
+            <img src="../imgs/svgs/sun.svg" alt="" width="50">
+          </button>
         </div>
       </div>
     </nav>
@@ -49,10 +53,10 @@
 
   <section id="head" class="mt-5">
     <div class="container row mx-auto mt-5">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <img src="../imgs/placeholserNewsImg1.png" class="img-fluid">
       </div>
-      <div class="col-6 d-flex justify-content-around align-items-center">
+      <div class="col-12 col-md-6 d-flex justify-content-around align-items-center">
         <div class="row">
           <h1>
             <p class="text-capitalized text-decoration-underline fs-1">
@@ -60,8 +64,9 @@
             </p>
           </h1>
           <div class="d-flex gap-2 fs-5">
-            <a href="categorias.html?category=" class="link-info">Tag1</a>
-            <a href="categorias.html?category=" class="link-info">Tag2</a>
+            <a href="categorias.html?category=" class="link-info">Tag</a>
+            <a class="link-info">|</a>
+            <a href="categorias.html?tag=" class="link-info">Cat</a>
           </div>
           <div class="d-flex gap-2 fs-4">
             <p class="fst-italic">by</p>
@@ -69,12 +74,24 @@
           </div>
           <p class="text-body-secondary">69.69.4200</p>
           <div class="d-flex gap-2">
-            <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
-            <p>70</p>
-            <figure><img src="../imgs/svgs/bookmark-filled.svg" alt="bookmark" width="18"></figure>
-            <p>70</p>
-            <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-            <p>69</p>
+            <div class="d-flex gap-1">
+              <button class="btn-icon" onclick="icon(this)">
+                <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+              </button>
+              <p>70</p>
+            </div>
+            <div class="d-flex gap-1">
+              <button class="btn-icon" onclick="icon(this)">
+                <figure><img src="../imgs/svgs/bookmark-filled.svg" alt="bookmark" width="18"></figure>
+              </button>
+              <p>70</p>
+            </div>
+            <div class="d-flex gap-1">
+              <a href="#comment">
+                <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+              </a>
+              <p>69</p>
+            </div>
           </div>
         </div>
       </div>
@@ -129,7 +146,9 @@
         reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
         non-characteristic words etc.
       </p>
-      <img src="../imgs/placeholserNewsImg1.png" alt="img">
+      <figure>
+        <img src="../imgs/placeholserNewsImg1.png" alt="img" class="img-fluid">
+      </figure>
     </div>
   </section>
 
@@ -156,11 +175,15 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                <button class="btn-icon" onclick="icon(this)">
+                  <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                </button>
                 <p>70</p>
               </div>
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                <button class="btn-icon" onclick="mod(this)">
+                  <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                </button>
                 <p>70</p>
               </div>
             </div>
@@ -176,12 +199,16 @@
                 </p>
                 <div class="d-flex gap-5">
                   <div class="d-flex gap-2">
-                    <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                    <button class="btn-icon" onclick="icon(this)">
+                      <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                    </button>
                     <p>70</p>
                   </div>
                   <div class="d-flex gap-2">
-                    <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                    <p>69</p>
+                    <button class="btn-icon" onclick="mod(this)">
+                      <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                    </button>
+                    <p>70</p>
                   </div>
                 </div>
                 <btn class="btn text-body-secondary">69 Respuestas</btn>
@@ -201,12 +228,16 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="icon(this)">
+                  <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                </button>
+                <p>70</p>
               </div>
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="mod(this)">
+                  <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                </button>
+                <p>70</p>
               </div>
             </div>
             <btn class="btn text-body-secondary">69 Respuestas</btn>
@@ -223,12 +254,16 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="icon(this)">
+                  <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                </button>
+                <p>70</p>
               </div>
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="mod(this)">
+                  <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                </button>
+                <p>70</p>
               </div>
             </div>
             <btn class="btn text-body-secondary">69 Respuestas</btn>
@@ -246,12 +281,16 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="icon(this)">
+                  <figure><img src="../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
+                </button>
+                <p>70</p>
               </div>
               <div class="d-flex gap-2">
-                <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
+                <button class="btn-icon" onclick="mod(this)">
+                  <figure><img src="../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
+                </button>
+                <p>70</p>
               </div>
             </div>
             <btn class="btn text-body-secondary">69 Respuestas</btn>
@@ -267,6 +306,7 @@
   </footer>
 
   <!--                                                                                       SCRIPTS                                                                -->
+  <script src="../js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>

@@ -1,10 +1,16 @@
-const str = "<dialog open><form action='' method='post' class='container'><div class='input-group'><input class='form-control' name='comentario'><input class='btn btn-outline-info' type='submit' value='enviar'></div></form></dialog>"
+const str = "<form action='' method='post' class='container' ><div class='input-group'><input class='form-control' name='comentario'><input class='btn btn-outline-info' type='submit' value='enviar'></div></form>"
 let bool = false
-
+let dialog = null
 function mod(btn){
- if(bool == false){
-  btn.innerHTML += str
-  bool = true
+ if(!dialog){
+  dialog = document.createElement('dialog')
+  dialog.innerHTML = str
+  document.body.appendChild(dialog)
+  dialog.showModal()
+ }else{
+  dialog.close()
+  dialog.remove()
+  dialog = null
  }
 }
 

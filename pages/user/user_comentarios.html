@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
         <a href="../perfil.html" class="navbar-brand">
-          <img src="../../imgs/pfps/default-editor.png" alt="pfp" class="rounded-circle border border-2 border-success"
+          <img src="../../imgs/pfps/default.png" alt="pfp" class="rounded-circle border border-2 border-info"
             style="width: 50px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -26,17 +26,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="../../index.html"> Home</a>
+              <a class="nav-link active" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="editor_categorias.html" role="button" aria-expanded="false">
+              <a class="nav-link" href="../../pages/categorias.html" role="button" aria-expanded="false">
                 Categorías
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="editor_dashboard.html" role="button" aria-expanded="false">
-                Dashboard
-              </a>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-5" type="search" placeholder="Buscar por palabras claves"
@@ -56,29 +52,18 @@
       <h1 class="text-start">Dashboard</h1>
       <hr>
       <div class="row">
-        <ul class="d-flex gap-5 fs-4 list-unstyled flex-column flex-md-row">
+        <ul class="d-flex gap-5 fs-4 list-unstyled">
           <li>
-            <a class="link-secondary link-underline-opacity-0" href="editor_dashboard.html">Me gusta 69</a>
+            <a class="link-secondary link-underline-opacity-0" href="user_dashboard.html">Me gusta 69</a>
           </li>
           <li>
-            <a class="link-secondary link-underline-opacity-0" href="editor_posts.html">Mis blogs 69</a>
-          </li>
-          <li>
-            <a class="link-success" href="editor_comentarios.html">
-              Mis Comentarios 69
+            <a class="link-info" href="user_comentarios.html">
+              Tus Comentarios 69
             </a>
           </li>
           <li>
-            <a class="link-secondary link-underline-opacity-0" href="editor_dashboard-destacados.html">
-              Mis Destacados 69
-            </a>
-          </li>
-          <li>
-            <a class="link-secondary link-underline-opacity-0 d-none d-lg-block">|</a>
-          </li>
-          <li>
-            <a class="btn btn-outline-success" href="editor_crear-post.html">
-              Crear un blog
+            <a class="link-secondary link-underline-opacity-0" href="user_dashboard-destacados.html">
+              Tus Destacados 69
             </a>
           </li>
         </ul>
@@ -86,10 +71,10 @@
       <hr>
       <div class="row">
         <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/default-editor.png" alt="avatar" class="rounded-circle">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>John User</h4>
-            <a href="../perfil.html?username=" class="link-success fs-5">@juan</a>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
             <p class="fs-6">
               LOL
             </p>
@@ -97,25 +82,20 @@
               <div class="d-flex gap-5">
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="icon(this)">
-                    <figure><img src="../../imgs/svgs/heart-filled-success.svg" alt="heart" width="25"></figure>
+                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
                   </button>
                   <p>70</p>
                 </div>
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="mod(this)">
-                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
                   </button>
                   <p>70</p>
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning" onclick="mod(this)">
-                  Modificar
-                </button>
-                <a class="btn btn-outline-danger">
-                  Remover
-                </a>
-
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
               </div>
             </div>
             <btn class="btn text-body-secondary">Respuestas 69</btn>
@@ -125,10 +105,10 @@
       <hr class="mb-5">
       <div class="row">
         <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/default-editor.png" alt="avatar" class="rounded-circle">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>John User</h4>
-            <a href="../perfil.html?username=" class="link-success fs-5">@juan</a>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
             <p class="fs-6">
               LOL
             </p>
@@ -136,25 +116,20 @@
               <div class="d-flex gap-5">
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="icon(this)">
-                    <figure><img src="../../imgs/svgs/heart-filled-success.svg" alt="heart" width="25"></figure>
+                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
                   </button>
                   <p>70</p>
                 </div>
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="mod(this)">
-                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
                   </button>
                   <p>70</p>
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning" onclick="mod(this)">
-                  Modificar
-                </button>
-                <a class="btn btn-outline-danger">
-                  Remover
-                </a>
-
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
               </div>
             </div>
             <btn class="btn text-body-secondary">Respuestas 69</btn>
@@ -164,10 +139,10 @@
       <hr class="mb-5">
       <div class="row">
         <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/default-editor.png" alt="avatar" class="rounded-circle">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>John User</h4>
-            <a href="../perfil.html?username=" class="link-success fs-5">@juan</a>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
             <p class="fs-6">
               LOL
             </p>
@@ -175,25 +150,20 @@
               <div class="d-flex gap-5">
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="icon(this)">
-                    <figure><img src="../../imgs/svgs/heart-filled-success.svg" alt="heart" width="25"></figure>
+                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
                   </button>
                   <p>70</p>
                 </div>
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="mod(this)">
-                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
                   </button>
                   <p>70</p>
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning" onclick="mod(this)">
-                  Modificar
-                </button>
-                <a class="btn btn-outline-danger">
-                  Remover
-                </a>
-
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
               </div>
             </div>
             <btn class="btn text-body-secondary">Respuestas 69</btn>
@@ -203,10 +173,10 @@
       <hr class="mb-5">
       <div class="row">
         <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/default-editor.png" alt="avatar" class="rounded-circle">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>John User</h4>
-            <a href="../perfil.html?username=" class="link-success fs-5">@juan</a>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
             <p class="fs-6">
               LOL
             </p>
@@ -214,25 +184,20 @@
               <div class="d-flex gap-5">
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="icon(this)">
-                    <figure><img src="../../imgs/svgs/heart-filled-success.svg" alt="heart" width="25"></figure>
+                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
                   </button>
                   <p>70</p>
                 </div>
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="mod(this)">
-                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
                   </button>
                   <p>70</p>
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning" onclick="mod(this)">
-                  Modificar
-                </button>
-                <a class="btn btn-outline-danger">
-                  Remover
-                </a>
-
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
               </div>
             </div>
             <btn class="btn text-body-secondary">Respuestas 69</btn>
@@ -242,10 +207,10 @@
       <hr class="mb-5">
       <div class="row">
         <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/default-editor.png" alt="avatar" class="rounded-circle">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>John User</h4>
-            <a href="../perfil.html?username=" class="link-success fs-5">@juan</a>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
             <p class="fs-6">
               LOL
             </p>
@@ -253,31 +218,27 @@
               <div class="d-flex gap-5">
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="icon(this)">
-                    <figure><img src="../../imgs/svgs/heart-filled-success.svg" alt="heart" width="25"></figure>
+                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
                   </button>
                   <p>70</p>
                 </div>
                 <div class="d-flex gap-2">
                   <button class="btn-icon" onclick="mod(this)">
-                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
                   </button>
                   <p>70</p>
                 </div>
               </div>
               <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning" onclick="mod(this)">
-                  Modificar
-                </button>
-                <a class="btn btn-outline-danger">
-                  Remover
-                </a>
-
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
               </div>
             </div>
             <btn class="btn text-body-secondary">Respuestas 69</btn>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 

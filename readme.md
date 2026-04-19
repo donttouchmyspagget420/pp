@@ -7,6 +7,8 @@ Hay contenido(imagenes y historias) generado por IA y Exceco en anime pinturas u
 
 <ul>Este blog:<ul>
 <li>Utiliza Bootstrap</li>
+<li>Utiliza HTML</li>
+<li>Utiliza CSS</li>
 <li>Utiliza Javascript(eww)</li>
 
 <hr>
@@ -22,3 +24,7 @@ Hay contenido(imagenes y historias) generado por IA y Exceco en anime pinturas u
 <li>Visualizar publicaciones</li>
 <li>Visualizar perfil</li>
 <li>Navegar dashboard</li>
+<li>Like</li>
+<li>Guardar</li>
+<li>Cambiar tema(blanco,negro)</li>
+<li>Responsivo</li>

@@ -7,14 +7,19 @@
   <title>PP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
   <!--                                                                                       HEADER                                                                -->
+
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="../../imgs/logo_AI_GENERATED.png" alt="Logo" width="100"></a>
+        <a href="../perfil.html" class="navbar-brand">
+          <img src="../../imgs/pfps/default-editor.png" alt="pfp" class="rounded-circle border border-2 border-success"
+            style="width: 50px;">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,43 +27,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
-            </li>
-            <!--                             mostra si el usuario es logeado                                               -->
-            <li class="nav-item d-none">
-              <a class="nav-link" href="../../pages/perfil.html">Perfil</a>
+              <a class="nav-link active" href="../../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/categorias.html" role="button" aria-expanded="false">
+              <a class="nav-link" href="../../pages/editor/editor_categorias.html" role="button" aria-expanded="false">
                 Categorías
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="editor_dashboard.html" role="button" aria-expanded="false">
+                Dashboard
+              </a>
           </ul>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar por palabras claves"
+            <input class="form-control me-5" type="search" placeholder="Buscar por palabras claves"
               aria-label="Search" />
           </form>
-          <div class="text-end">
-            <a href="../../pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
-            <a href="../../pages/login.html" class="btn btn-info" role="button">Log in</a>
-          </div>
+          <button class="btn-icon ms-2" role="button" onclick="toggle(this)">
+            <img src="../../imgs/svgs/sun.svg" alt="" width="50">
+          </button>
         </div>
       </div>
     </nav>
   </header>
 
-
   <form action="" method="post">
     <section id="head" class="mt-5">
       <div class="container row mx-auto mt-5">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <img src="../../imgs/placeholserNewsImg1.png" class="img-fluid">
           <div class="input-group">
             <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
               name="imagen" aria-label="Upload" required>
           </div>
         </div>
-        <div class="col-6 d-flex justify-content-around align-items-center">
+        <div class="col-12 col-md-6 d-flex justify-content-around align-items-center">
           <div class="row">
 
             <input class="form-control form-control-lg mb-3" type="text" placeholder=".form-control-lg"
@@ -97,7 +100,7 @@
 
     <section id="content">
       <div class="mx-auto d-flex flex-column gap-3 justify-content-around align-items-center">
-        <textarea name="contenido" required rows="50" cols="100">
+        <textarea name="contenido" required rows="50" cols="100" class="w-50 w-lg-100">
           <p class="fs-6 fw-light">
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
             galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
@@ -154,7 +157,10 @@
             non-characteristic words etc.
           </p>
         </textarea>
-        <img src="../../imgs/placeholserNewsImg1.png" alt="img">
+        <figure>
+          <img src="../../imgs/placeholserNewsImg1.png" alt="img" class="img-fluid">
+        </figure>
+        <button type="submit" class="btn btn-lg btn-outline-warning">Guardar</button>
       </div>
     </section>
   </form>
@@ -165,7 +171,7 @@
       <form action="" method="post" class="d-flex flex-column gap-5">
         <label for="comment" class="fs-1">Comparte tus opiniones</label>
         <textarea name="comment" id="comment" class="form-control" rows="10"></textarea>
-        <button type="submit" class="btn btn-lg btn-outline-info">Enviar</button>
+        <button type="submit" class="btn btn-lg btn-outline-success">Enviar</button>
       </form>
 
 
@@ -179,129 +185,126 @@
             <p class="fs-6">
               i use arch btw
             </p>
-            <div class="d-flex gap-5">
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
-                <p>70</p>
-              </div>
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>70</p>
-              </div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning">Modificar</button>
-                <a class="btn btn-outline-danger">Remover</a>
-              </div>
-            </div>
-            <btn class="btn text-body-secondary">Ocultar Respuestas</btn>
-
-            <div class="comment text-start d-flex gap-3 mt-5">
-              <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
-              <div class="container">
-                <h4>John Jones Jonahtan</h4>
-                <a href="perfil.html?username=" class="link-info fs-5">@jonny</a>
-                <p class="fs-6">
-                  me too
-                </p>
-                <div class="d-flex gap-5">
-                  <div class="d-flex gap-2">
-                    <figure><img src="../../imgs/svgs/heart-filled.svg" alt="heart" width="25"></figure>
-                    <p>70</p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                    <p>69</p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-outline-warning">Modificar</button>
-                    <a class="btn btn-outline-danger">Remover</a>
-                  </div>
+            <div class="d-block d-md-flex gap-5">
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="icon(this)">
+                    <figure><img src="../../imgs/svgs/heart-success.svg" alt="heart" width="25"></figure>
+                  </button>
+                  <p>70</p>
                 </div>
-                <btn class="btn text-body-secondary">69 Respuestas</btn>
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="mod(this)">
+                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 ">
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
+              </div>
+            </div>
+            <btn class="btn text-body-secondary">69 Respuestas</btn>
+          </div>
+        </div>
+        <hr>
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              i use arch btw
+            </p>
+            <div class="d-block d-md-flex gap-5">
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="icon(this)">
+                    <figure><img src="../../imgs/svgs/heart-success.svg" alt="heart" width="25"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="mod(this)">
+                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 ">
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
+              </div>
+            </div>
+            <btn class="btn text-body-secondary">69 Respuestas</btn>
+          </div>
+        </div>
+        <hr>
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              i use arch btw
+            </p>
+            <div class="d-block d-md-flex gap-5">
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="icon(this)">
+                    <figure><img src="../../imgs/svgs/heart-success.svg" alt="heart" width="25"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="mod(this)">
+                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 ">
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
+              </div>
+            </div>
+            <btn class="btn text-body-secondary">69 Respuestas</btn>
+          </div>
+        </div>
+        <hr>
+        <div class="comment text-start d-flex gap-3">
+          <img width="50" height="50" src="../../imgs/pfps/default.png" alt="avatar" class="rounded-circle">
+          <div class="container">
+            <h4>Juan Comentario</h4>
+            <a href="../perfil.html?username=" class="link-info fs-5">@juan</a>
+            <p class="fs-6">
+              i use arch btw
+            </p>
+            <div class="d-block d-md-flex gap-5">
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="icon(this)">
+                    <figure><img src="../../imgs/svgs/heart-success.svg" alt="heart" width="25"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn-icon" onclick="mod(this)">
+                    <figure><img src="../../imgs/svgs/comment-success.svg" alt="heart" width="18"></figure>
+                  </button>
+                  <p>70</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 ">
+                <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                <a class="btn btn-outline-danger">Remover</a>
+              </div>
+            </div>
+            <btn class="btn text-body-secondary">69 Respuestas</btn>
+          </div>
+        </div>
 
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="mb-5">
-        <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/mangood-saul.png" alt="avatar" class="rounded-circle">
-          <div class="container">
-            <h4>Mangood Saul</h4>
-            <a href="../perfil.html?username=" class="link-info fs-5">@law</a>
-            <p class="fs-6">
-              good article
-            </p>
-            <div class="d-flex gap-5">
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning">Modificar</button>
-                <a class="btn btn-outline-danger">Remover</a>
-              </div>
-            </div>
-            <btn class="btn text-body-secondary">69 Respuestas</btn>
-          </div>
-        </div>
-        <hr class="mb-5">
-        <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/batman.jpg" alt="avatar" class="rounded-circle">
-          <div class="container">
-            <h4>Batman</h4>
-            <a href="../perfil.html?username=" class="link-info fs-5">@vengence</a>
-            <p class="fs-6">
-              I'm batman
-            </p>
-            <div class="d-flex gap-5">
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning">Modificar</button>
-                <a class="btn btn-outline-danger">Remover</a>
-              </div>
-            </div>
-            <btn class="btn text-body-secondary">69 Respuestas</btn>
-          </div>
-        </div>
-        <hr class="mb-5">
-        <div class="comment text-start d-flex gap-3">
-          <img width="50" height="50" src="../../imgs/pfps/rick-astley.jpg" alt="avatar" class="rounded-circle">
-          <div class="container">
-            <h4>Rick Astley</h4>
-            <a href="../perfil.html?username=" class="link-info fs-5">@rick</a>
-            <p class="fs-6">
-              Never gonna give you up<br>
-              Never gonna let you down
-            </p>
-            <div class="d-flex gap-5">
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/heart.svg" alt="heart" width="25"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <figure><img src="../../imgs/svgs/comment.svg" alt="heart" width="18"></figure>
-                <p>69</p>
-              </div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-outline-warning">Modificar</button>
-                <a class="btn btn-outline-danger">Remover</a>
-              </div>
-            </div>
-            <btn class="btn text-body-secondary">69 Respuestas</btn>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -312,6 +315,7 @@
   </footer>
 
   <!--                                                                                       SCRIPTS                                                                -->
+  <script src="../../js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
