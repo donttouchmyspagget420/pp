@@ -7,6 +7,7 @@
   <title>PP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -24,10 +25,6 @@
             <li class="nav-item">
               <a class="nav-link active" href="#">Home</a>
             </li>
-            <!--                             mostra si el usuario es logeado                                               -->
-            <li class="nav-item d-none">
-              <a class="nav-link" href="pages/perfil.html">Perfil</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/categorias.html" role="button" aria-expanded="false">
                 Categorías
@@ -42,6 +39,9 @@
             <a href="pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
             <a href="pages/login.html" class="btn btn-info" role="button">Log in</a>
           </div>
+          <button class="btn-icon ms-2" role="button" onclick="toggle(this)">
+            <img src="imgs/svgs/sun.svg" alt="" width="50">
+          </button>
         </div>
       </div>
     </nav>
@@ -53,13 +53,47 @@
   <section id="top" class="mt-5">
     <h1 class="text-center"><strong>Top Noticias</strong></h1>
     <div class="container row mx-auto mt-5">
-      <div class="col-6">
+      <div class="col-12 col-lg-6">
         <img src="imgs/placeholserNewsImg1.png" class="img-fluid">
-        <div class="d-flex justify-content-between">
-          <h1><strong><i>Title</i></strong></h1>
+        <div class="row">
+          <div class="col-4">
+            <h1><strong><i>Title</i></strong></h1>
+            <a href="pages/perfil.html" class="link-info fs-3">John News</a>
+          </div>
+          <div class="col-4 mt-3">
+            <div class="d-flex gap-1">
+              <a href="pages/categorias.html" class="link-info">Cat</a>
+              <a href="pages/categorias.html" class="link-info">|</a>
+              <a href="pages/categorias.html" class="link-info">Tag</a>
+              <p class="text-body-secondary">69.69.4200</p>
+            </div>
+            <div class="d-flex gap-5">
+              <div class="d-flex gap-3">
+                <button onclick="icon(this)" class="btn-icon">
+                  <figure>
+                    <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                  </figure>
+                </button>
+                <p class="text-body-secondary">69</p>
+              </div>
+              <div class="d-flex gap-3">
+                <button onclick="icon(this)" class="btn-icon">
+                  <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                </button>
+                <p class="text-body-secondary">69</p>
+              </div>
+              <div class="d-flex gap-3">
+                <a href="pages/post.html#comment">
+                  <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                </a>
+                <p class="text-body-secondary">69</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6">
         <ol class="list-group list-group-flush">
           <li class="list-group-item">
             <div class="container row">
@@ -67,19 +101,32 @@
                 <h6><strong>Title</strong></h6>
                 <div class="d-flex gap-3">
                   <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                  <div class="d-flex gap-1">
+                    <a href="pages/categorias.html" class="link-info">Cat</a>
+                    <a href="pages/categorias.html" class="link-info">|</a>
+                    <a href="pages/categorias.html" class="link-info">Tag</a>
+                  </div>
                   <p class="text-body-secondary">69.69.4200</p>
                 </div>
                 <div class="d-flex gap-5">
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="25" src="imgs/svgs/heart-filled.svg" alt="heart"></figure>
-                    <p class="text-body-secondary">70</p>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure>
+                        <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                      </figure>
+                    </button>
+                    <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/bookmark-filled.svg" alt="bookmark"></figure>
-                    <p class="text-body-secondary">70</p>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    </button>
+                    <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    <a href="pages/post.html#comment">
+                      <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    </a>
                     <p class="text-body-secondary">69</p>
                   </div>
                 </div>
@@ -93,19 +140,32 @@
                 <h6><strong>Title</strong></h6>
                 <div class="d-flex gap-3">
                   <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                  <div class="d-flex gap-1">
+                    <a href="pages/categorias.html" class="link-info">Cat</a>
+                    <a href="pages/categorias.html" class="link-info">|</a>
+                    <a href="pages/categorias.html" class="link-info">Tag</a>
+                  </div>
                   <p class="text-body-secondary">69.69.4200</p>
                 </div>
                 <div class="d-flex gap-5">
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure>
+                        <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                      </figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    <a href="pages/post.html#comment">
+                      <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    </a>
                     <p class="text-body-secondary">69</p>
                   </div>
                 </div>
@@ -119,19 +179,32 @@
                 <h6><strong>Title</strong></h6>
                 <div class="d-flex gap-3">
                   <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                  <div class="d-flex gap-1">
+                    <a href="pages/categorias.html" class="link-info">Cat</a>
+                    <a href="pages/categorias.html" class="link-info">|</a>
+                    <a href="pages/categorias.html" class="link-info">Tag</a>
+                  </div>
                   <p class="text-body-secondary">69.69.4200</p>
                 </div>
                 <div class="d-flex gap-5">
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure>
+                        <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                      </figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    <a href="pages/post.html#comment">
+                      <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    </a>
                     <p class="text-body-secondary">69</p>
                   </div>
                 </div>
@@ -145,19 +218,32 @@
                 <h6><strong>Title</strong></h6>
                 <div class="d-flex gap-3">
                   <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                  <div class="d-flex gap-1">
+                    <a href="pages/categorias.html" class="link-info">Cat</a>
+                    <a href="pages/categorias.html" class="link-info">|</a>
+                    <a href="pages/categorias.html" class="link-info">Tag</a>
+                  </div>
                   <p class="text-body-secondary">69.69.4200</p>
                 </div>
                 <div class="d-flex gap-5">
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure>
+                        <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                      </figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    <button onclick="icon(this)" class="btn-icon">
+                      <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                    </button>
                     <p class="text-body-secondary">69</p>
                   </div>
                   <div class="d-flex gap-3">
-                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    <a href="pages/post.html#comment">
+                      <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                    </a>
                     <p class="text-body-secondary">69</p>
                   </div>
                 </div>
@@ -165,6 +251,7 @@
               <div class="col-4"><img src="imgs/placeholserNewsImg1.png" alt="not" class="img-fluid"></div>
             </div>
           </li>
+
         </ol>
       </div>
     </div>
@@ -177,21 +264,42 @@
     <h1 class="text-center"><strong>Noticas recientes</strong></h1>
     <div class="container mx-auto">
       <div class="row mt-5">
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart-filled.svg " alt="heart"></figure>
-                <p class="text-body-secondary">70</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark-filled.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">70</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -199,21 +307,42 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -221,21 +350,42 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -243,23 +393,45 @@
             </div>
           </div>
         </div>
+
       </div>
       <div class="row mt-5">
-        <div class="col-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -267,21 +439,42 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -289,21 +482,42 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -311,111 +525,42 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-12 col-sm-6 col-lg-3">
           <div class="card">
             <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title"><strong>Title</strong></h5>
               <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
-              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
               </div>
-              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
-              <hr>
-              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col-3">
-          <div class="card">
-            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Title</strong></h5>
-              <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
               <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
-              </div>
-              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
-              <hr>
-              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Title</strong></h5>
-              <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
-              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
-              </div>
-              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
-              <hr>
-              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Title</strong></h5>
-              <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
-              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
-              </div>
-              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
-              <hr>
-              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title"><strong>Title</strong></h5>
-              <hr>
-              <a href="pages/perfil.html?username=" class="link-info">John News</a>
-              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
-              <div class="d-flex gap-3">
-                <figure><img role="button" width="25" src="imgs/svgs/heart.svg " alt="heart"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
-                <p class="text-body-secondary">69</p>
-                <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
-                <p class="text-body-secondary">69</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
               </div>
               <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
               <hr>
@@ -425,6 +570,180 @@
         </div>
       </div>
 
+      <div class="row mt-5">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card">
+            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Title</strong></h5>
+              <hr>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+              <hr>
+              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card">
+            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Title</strong></h5>
+              <hr>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+              <hr>
+              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card">
+            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Title</strong></h5>
+              <hr>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+              <hr>
+              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card">
+            <img src="imgs/placeholserNewsImg1.png" alt="card-img" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Title</strong></h5>
+              <hr>
+              <div class="d-flex gap-5">
+                <a href="pages/perfil.html?username=" class="link-info">John News</a>
+                <div class="d-flex gap-1">
+                  <a href="pages/categorias.html" class="link-info">Cat</a>
+                  <a class="link-info">|</a>
+                  <a href="pages/categorias.html" class="link-info">Tag</a>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary">TextTextTextTextTextTextTextTextTextTextTextText</p>
+              <div class="d-flex gap-5">
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure>
+                      <img width="25" src="imgs/svgs/heart.svg" alt="heart">
+                    </figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <button onclick="icon(this)" class="btn-icon">
+                    <figure><img role="button" width="18" src="imgs/svgs/bookmark.svg" alt="bookmark"></figure>
+                  </button>
+                  <p class="text-body-secondary">69</p>
+                </div>
+                <div class="d-flex gap-3">
+                  <a href="pages/post.html#comment">
+                    <figure><img role="button" width="18" src="imgs/svgs/comment.svg" alt="comments"></figure>
+                  </a>
+                  <p class="text-body-secondary">69</p>
+                </div>
+              </div>
+              <p class="card-text text-body-secondary"><i>69.69.4200</i></p>
+              <hr>
+              <a href="pages/post.html?id=" class="btn btn-outline-info" role="button">Leer Más</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -435,6 +754,7 @@
   </footer>
 
   <!--                                                                                       SCRIPTS                                                                -->
+  <script src="js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
