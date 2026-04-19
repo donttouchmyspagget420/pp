@@ -4,6 +4,7 @@
 <hr>
 
 Hay contenido(imagenes y historias) generado por IA y Exceco en anime pinturas usar con precaución 
+Cuidado cuando cambias modos
 
 <ul>Este blog:<ul>
 <li>Utiliza Bootstrap</li>
