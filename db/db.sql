@@ -1,3 +1,5 @@
+--CREADO CON Estupidez natural de Amangeldiuly Madi
+
 CREATE TABLE IF NOT EXISTS roles(
   id SERIAL PRIMARY KEY NOT NULL,
   nombre TEXT NOT NULL
@@ -23,8 +25,8 @@ CREATE TABLE IF NOT EXISTS usuarios(
   correo TEXT UNIQUE NOT NULL,
   ubicacion TEXT NULL,
   educacion TEXT NULL,
-  siguidores INTEGER NOT NULL,
-  siguiendo INTEGER NOT NULL,
+  siguidores INTEGER DEFAULT 0,
+  siguiendo INTEGER DEFAULT 0,
   tele VARCHAR(20) UNIQUE NOT NULL,
   password TEXT NOT NULL,
   FOREIGN KEY (fk_rol) REFERENCES roles(id)
@@ -38,18 +40,9 @@ CREATE TABLE IF NOT EXISTS publicaciones(
   titulo TEXT NOT NULL,
   contenido TEXT NOT NULL,
   fk_autor INTEGER,
-  fk_etiqueta INTEGER,
-  fk_categoria INTEGER,
-  fecha DATE NOW(),
-  guardados INTEGER NOT NULL,
-  
+  fecha DATE DEFAULT CURRENT_DATE,
+  destacados INT DEFAULT 0,
   FOREIGN KEY (fk_autor) REFERENCES usuarios(id)
-  ON UPDATE CASCADE
-  ON DELETE SET NULL,
-  FOREIGN KEY (fk_etiqueta) REFERENCES etiquetas(id)
-  ON UPDATE CASCADE
-  ON DELETE SET NULL,
-  FOREIGN KEY (fk_categoria) REFERENCES categorias(id)
   ON UPDATE CASCADE
   ON DELETE SET NULL
 );
@@ -59,22 +52,13 @@ CREATE TABLE IF NOT EXISTS comentarios(
   contenido TEXT NOT NULL,
   fk_autor INTEGER,
   fk_publicacion INTEGER,
-  likes INTEGER,
+  fk_comentario INTEGER NULL,
+  likes INTEGER DEFAULT 0,
+  respuestas INTEGER DEFAULT 0,
   FOREIGN KEY (fk_autor) REFERENCES usuarios(id)
   ON UPDATE CASCADE
   ON DELETE SET NULL,
   FOREIGN KEY (fk_publicacion) REFERENCES publicaciones(id)
-  ON UPDATE CASCADE
-  ON DELETE SET NULL
-);
-
-CREATE TABLE IF NOT EXISTS respuestas(
-  id SERIAL PRIMARY KEY NOT NULL,
-  contenido TEXT NOT NULL,
-  fk_autor INTEGER,
-  fk_comentario INTEGER,
-  likes INTEGER,
-  FOREIGN KEY (fk_autor) REFERENCES usuarios(id)
   ON UPDATE CASCADE
   ON DELETE SET NULL,
   FOREIGN KEY (fk_comentario) REFERENCES comentarios(id)
@@ -83,23 +67,25 @@ CREATE TABLE IF NOT EXISTS respuestas(
 );
 
 CREATE TABLE IF NOT EXISTS likes(
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL NOT NULL,
   fk_autor INTEGER,
-  fk_publicacion INTEGER,
-
+  fk_publicacion INTEGER NULL,
+  fk_comentario INTEGER NULL,
   FOREIGN KEY (fk_autor) REFERENCES usuarios(id)
   ON UPDATE CASCADE
   ON DELETE SET NULL,
   FOREIGN KEY (fk_publicacion) REFERENCES publicaciones(id)
   ON UPDATE CASCADE
+  ON DELETE SET NULL,
+  FOREIGN KEY (fk_comentario) REFERENCES comentarios(id)
+  ON UPDATE CASCADE
   ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS guardadas(
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL NOT NULL,
   fk_autor INTEGER,
   fk_publicacion INTEGER,
-
   FOREIGN KEY (fk_autor) REFERENCES usuarios(id)
   ON UPDATE CASCADE
   ON DELETE SET NULL,
@@ -123,3 +109,27 @@ CREATE TABLE IF NOT EXISTS configuraciones(
   limiteDeComentarios INTEGER NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS configUsuario(
+  id SERIAL,
+  fk_usuario INTEGER UNIQUE,
+  color TEXT NOT NULL,
+  correoPublico BOOLEAN DEFAULT FALSE,
+  ubicacionPublico BOOLEAN DEFAULT FALSE,
+  educacionPublico BOOLEAN DEFAULT FALSE,
+  telePublico BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (fk_usuario) REFERENCES usuarios(id)
+  ON UPDATE CASCADE
+  ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS etiquetasPublicacion(
+  id SERIAL,
+  fk_publicacion INTEGER,
+  fk_etiqueta INTEGER,
+  FOREIGN KEY (fk_etiqueta) REFERENCES etiquetas(id)
+  ON UPDATE CASCADE
+  ON DELETE SET NULL,
+  FOREIGN KEY (fk_publicacion) REFERENCES publicaciones(id)
+  ON UPDATE CASCADE
+  ON DELETE SET NULL
+);
