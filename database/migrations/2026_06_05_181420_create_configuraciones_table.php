@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\ColorAccente;
 
 return new class extends Migration
 {
@@ -12,10 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('configuraciones', function (Blueprint $table) {
-            $table->id();
-            $table->enum('colorAccentoUsuario', ['aqua', 'rojo', 'blanco', 'negro', 'verde']);
-            $table->enum('colorAccentoEditor', ['aqua', 'rojo', 'blanco', 'negro', 'verde']);
-            $table->enum('colorAccentoAdmin', ['aqua', 'rojo', 'blanco', 'negro', 'verde']);
+            $table->enum('colorAccentoUsuario', ColorAccente::cases());
+            $table->enum('colorAccentoEditor', ColorAccente::cases());
+            $table->enum('colorAccentoAdmin', ColorAccente::cases());
             $table->string('pfpPorDefectoUsuario');
             $table->string('pfpPorDefectoEditor');
             $table->string('pfpPorDefectoAdmin');

@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Guardada;
+use App\Models\Publicacion;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Guardada>
  */
 class GuardadaFactory extends Factory
 {
@@ -18,7 +20,8 @@ class GuardadaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'fk_autor' => Usuario::factory(),
+            'fk_publicacion' => Publicacion::factory()
         ];
     }
 }

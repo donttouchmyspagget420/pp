@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Publicacion;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Publicacion>
  */
 class PublicacionFactory extends Factory
 {
@@ -18,7 +19,12 @@ class PublicacionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'imagen' => fake()->image(storage_path('app/public/publicaciones/'), 1035, 690),
+            'titulo' => fake()->sentence(),
+            'contenido' => fake()->paragraph(),
+            'fk_autor' => Usuario::factory(),
+            'fecha' => now(),
+            'destacados' => rand()
         ];
     }
 }

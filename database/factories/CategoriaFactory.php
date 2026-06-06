@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Categoria>
  */
 class CategoriaFactory extends Factory
 {
@@ -18,7 +18,7 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => fake()->unique()->word()
         ];
     }
 }

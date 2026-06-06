@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\ColorAccente;
 
 return new class extends Migration
 {
@@ -13,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('config_usuarios', function (Blueprint $table) {
             $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('color', ['aqua', 'rojo', 'blanco', 'negro', 'verde']);
+            $table->enum('color', ColorAccente::cases());
             $table->boolean('correoPublico')->default(false);
             $table->boolean('ubicacionPublico')->default(false);
             $table->boolean('educacionPublico')->default(false);

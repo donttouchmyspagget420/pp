@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Etiqueta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Etiqueta>
  */
 class EtiquetaFactory extends Factory
 {
@@ -18,7 +18,7 @@ class EtiquetaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre' => fake()->unique()->word()
         ];
     }
 }

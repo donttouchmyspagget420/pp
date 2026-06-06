@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\EtiquetaPublicacion;
+use App\Models\Etiqueta;
+use App\Models\Publicacion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<EtiquetaPublicacion>
  */
 class EtiquetaPublicacionFactory extends Factory
 {
@@ -18,7 +20,8 @@ class EtiquetaPublicacionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'fk_publicacion' => Publicacion::factory(),
+            'fk_etiqueta' => Etiqueta::factory()
         ];
     }
 }
