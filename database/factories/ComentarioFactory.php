@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Comentario;
-use App\Models\Usuario;
 use App\Models\Publicacion;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,19 +20,12 @@ class ComentarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'contenido' => fake()->sentences(),
+            'contenido' => fake()->paragraph(),
             'fk_autor' => Usuario::factory(),
             'fk_publicacion' => Publicacion::factory(),
-            'fk_comentario' => null,
-            'likes' => rand(),
-            'respuestas' => rand()
+            'fk_comentario' => Comentario::factory(),
+            'likes' => rand(0, 1000),
+            'respuestas' => rand(0, 1000)
         ];
-    }
-
-    public function respuesta(): static
-    {
-        return $this->state(fn() => [
-            'fk_comentario' => Comentario::factory()
-        ]);
     }
 }

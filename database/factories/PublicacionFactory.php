@@ -24,7 +24,7 @@ class PublicacionFactory extends Factory
             'contenido' => fake()->paragraph(),
             'fk_autor' => Usuario::factory(),
             'fecha' => now(),
-            'destacados' => rand()
+            'destacados' => rand(0, 1000)
         ];
     }
 }

@@ -22,24 +22,8 @@ class LikeFactory extends Factory
     {
         return [
             'fk_autor' => Usuario::factory(),
-            'fk_publicacion' => null,
-            'fk_comentario' => null
-        ];
-    }
-
-
-    public function publicacion(): static
-    {
-        return $this->state(fn() => [
-            'fk_publicacion' => Publicacion::factory()
-        ]);
-    }
-
-
-    public function comentario(): static
-    {
-        return $this->state(fn() => [
+            'fk_publicacion' => Publicacion::factory(),
             'fk_comentario' => Comentario::factory()
-        ]);
+        ];
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Usuario extends Model
 {
@@ -17,8 +19,13 @@ class Usuario extends Model
 
     public $timestamps = false;
 
-    public function configUsuario()
+    public function configUsuario(): HasOne
     {
         return $this->hasOne(ConfigUsuario::class, 'fk_usuario');
+    }
+
+    public function rol(): BelongsTo
+    {
+        return $this->belongsTo(Rol::class, 'fk_rol');
     }
 }

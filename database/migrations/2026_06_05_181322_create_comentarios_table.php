@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('contenido');
             $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_publicacion')->nullable()->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fk_comentario')->nullable()->constrained('comentarios', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('likes')->default(0);
             $table->bigInteger('respuestas')->default(0);

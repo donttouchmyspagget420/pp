@@ -48,21 +48,20 @@ class DatabaseSeeder extends Seeder
         $user = Rol::create(['nombre' => 'user']);
 
 
-        Usuario::factory()->has(ConfigUsuario::factory())->count(1)->role($admin)->create();
+        Usuario::factory()->has(ConfigUsuario::factory())->for($admin)->count(1)->create();
 
-        $editors = Usuario::factory()->has(ConfigUsuario::factory())->count(5)->role($editor)->create();
-        $usuarios = Usuario::factory()->has(ConfigUsuario::factory())->count(20)->role($user)->create();
+        $editors = Usuario::factory()->has(ConfigUsuario::factory())->for($editor)->count(5)->create();
+        $usuarios = Usuario::factory()->has(ConfigUsuario::factory())->for($user)->count(20)->create();
 
         $publicaciones = [];
         $comentarios = [];
 
-        foreach ($editors as $edit) {
-            array_push($publicaciones, Publicacion::factory()->recycle($edit)->create());
+        for ($i = 0; $i < 5; $i++) {
+            array_push($publicaciones, Publicacion::factory()->for($editors->random())->create());
         }
 
-        foreach ($publicaciones as $pub) {
-            $ran = $usuarios->random();
-            array_push($comentarios, Comentario::factory()->recycle([$ran, $pub])->create());
+        for ($i = 0; $i < 5; $i++) {
+            array_push($comentarios, Comentario::factory()->for($usuarios->random())->for($publicaciones[0])->create());
         }
 
         foreach ($publicaciones as $pub) {
