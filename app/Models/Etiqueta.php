@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Etiqueta extends Model
 {
@@ -14,4 +15,9 @@ class Etiqueta extends Model
     protected $fillable = ['nombre'];
 
     public $timestamps = false;
+
+    public function publicaciones(): BelongsToMany
+    {
+        return $this->belongsToMany(Publicacion::class, 'etiquetas_publicaciones', 'fk_etiqueta', 'fk_publicacion');
+    }
 }

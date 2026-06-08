@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Comentario extends Model
 {
@@ -30,5 +31,10 @@ class Comentario extends Model
     public function comentario(): BelongsTo
     {
         return $this->belongsTo(Comentario::class, 'fk_comentario');
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(Usuario::class, 'likes', 'fk_comentario', 'fk_autor');
     }
 }

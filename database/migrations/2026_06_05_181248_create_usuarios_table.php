@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('correo')->unique();
             $table->string('ubicacion')->nullable();
             $table->string('educacion')->nullable();
-            $table->bigInteger('siguidores', false, true)->default(0);
-            $table->bigInteger('siguiendo', false, true)->default(0);
             $table->string('tele', 20)->unique();
             $table->string('password');
         });

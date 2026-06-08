@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\ConfigUsuario;
-use App\Models\Usuario;
 use App\Enums\ColorAccente;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +19,6 @@ class ConfigUsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'fk_usuario' => Usuario::factory(),
             'color' => fake()->randomElement(ColorAccente::cases()),
             'correoPublico' => fake()->boolean(),
             'ubicacionPublico' => fake()->boolean(),

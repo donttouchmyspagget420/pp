@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('contenido');
             $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->date('fecha')->useCurrent();
-            $table->bigInteger('destacados')->default(0);
         });
     }
 

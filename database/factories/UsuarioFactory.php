@@ -25,15 +25,12 @@ class UsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'fk_rol' => fake()->randomElement(Roles::cases()),
             'pfp' => 'default.png',
             'nombre' => fake()->name(),
             'username' => fake()->unique()->userName(),
             'correo' => fake()->unique()->safeEmail(),
             'ubicacion' => fake()->country() . '|' . fake()->city(),
             'educacion' => 'Universidad Nacional del ' . fake()->word(),
-            'siguidores' => rand(0, 1000),
-            'siguiendo' => rand(0, 1000),
             'tele' => fake()->unique()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
         ];

@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Publicacion;
-use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,9 +21,7 @@ class PublicacionFactory extends Factory
             'imagen' => fake()->image(storage_path('app/public/publicaciones/'), 1035, 690),
             'titulo' => fake()->sentence(),
             'contenido' => fake()->paragraph(),
-            'fk_autor' => Usuario::factory(),
             'fecha' => now(),
-            'destacados' => rand(0, 1000)
         ];
     }
 }
