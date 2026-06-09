@@ -18,7 +18,7 @@ class PublicacionFactory extends Factory
     public function definition(): array
     {
         return [
-            'imagen' => fake()->image(storage_path('app/public/publicaciones/'), 1035, 690),
+            'imagen' => fake()->image(storage_path('app/public/publicaciones'), 1035, 690),
             'titulo' => fake()->sentence(),
             'contenido' => fake()->paragraph(),
             'fecha' => now(),

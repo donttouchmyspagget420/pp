@@ -53,3 +53,7 @@ function icon(btn){
  img.setAttribute('src',path)
  count.textContent = num
 }
+
+window.mod = mod;
+window.toggle = toggle;
+window.icon = icon;
