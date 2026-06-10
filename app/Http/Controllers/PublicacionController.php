@@ -9,8 +9,15 @@ class PublicacionController extends Controller
 {
     public function index(): View
     {
-        $pubs = Publicacion::withCount('likes')->orderByDesc('likes_count')->limit(5)->get();
+        $tops = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->limit(5)->get();
+        $recientes = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('fecha')->limit(9)->get();
 
-        return view('index', compact('pubs'));
+        return view('index', compact('tops'), compact('recientes'));
+    }
+
+    public function show(): View
+    {
+        //todo
+        return view('publicacion.show');
     }
 }

@@ -15,12 +15,17 @@ class PublicacionFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    /**
+     * image y imageUrl formatter no trabaja: https://fakerphp.org/formatters/image/
+     */
     public function definition(): array
     {
         return [
-            'imagen' => fake()->image(storage_path('app/public/publicaciones'), 1035, 690),
-            'titulo' => fake()->sentence(),
-            'contenido' => fake()->paragraph(),
+            'imagen' => 'https://picsum.photos/1035/680?random=' . fake()->numberBetween(1, 10000),
+            'titulo' => fake()->sentence(rand(1, 6), true),
+            'contenido' => implode("\n\n", fake()->paragraphs(6)),
+            'descripcion' => fake()->paragraph(),
             'fecha' => now(),
         ];
     }

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Categoria extends Model
 {
@@ -15,9 +14,4 @@ class Categoria extends Model
     protected $fillable = ['nombre'];
 
     public $timestamps = false;
-
-    public function publicaciones(): BelongsToMany
-    {
-        return $this->belongsToMany(Publicacion::class, 'categorias_publicaciones', 'fk_categoria', 'fk_publicacion');
-    }
 }

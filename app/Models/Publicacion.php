@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Publicacion extends Model
 {
@@ -13,7 +14,7 @@ class Publicacion extends Model
 
     protected $table = 'publicaciones';
 
-    protected $fillable = ['imagen', 'titulo', 'contenido', 'fk_autor', 'fecha', 'destacados'];
+    protected $fillable = ['imagen', 'titulo', 'contenido', 'fk_autor', 'fecha', 'destacados', 'fk_categoria', 'descripcion'];
 
     public $timestamps = false;
 
@@ -21,6 +22,16 @@ class Publicacion extends Model
     public function autor(): BelongsTo
     {
         return $this->belongsTo(Usuario::class, 'fk_autor');
+    }
+
+    public function categorias(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class, 'fk_categoria');
+    }
+
+    public function comentario(): HasMany
+    {
+        return $this->hasMany(Comentario::class, 'fk_publicacion');
     }
 
     public function etiquetas(): BelongsToMany
@@ -38,8 +49,13 @@ class Publicacion extends Model
         return $this->belongsToMany(Usuario::class, 'guardadas', 'fk_publicacion', 'fk_autor');
     }
 
-    public function categorias(): BelongsToMany
+
+    public function getImagen()
     {
-        return $this->belongsToMany(Categoria::class, 'categorias_publicaciones', 'fk_publicacion', 'fk_categoria');
+        if (filter_var($this->imagen, FILTER_VALIDATE_URL)) {
+            return $this->imagen;
+        }
+
+        return asset('storage/publicaciones' . $this->imagen);
     }
 }

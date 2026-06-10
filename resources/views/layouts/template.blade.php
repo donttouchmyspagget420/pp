@@ -32,14 +32,14 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar por palabras claves"
+            <input class="form-control" type="search" placeholder="Buscar por palabras claves"
               aria-label="Search" />
           </form>
-          <div class="text-end">
+          <div class="text-end ms-3 d-flex gap-2">
             <a href="pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
             <a href="pages/login.html" class="btn btn-info" role="button">Log in</a>
           </div>
-          <button class="btn-icon ms-2" role="button" onclick="toggle(this)">
+          <button class="btn-icon ms-3" role="button" onclick="toggle(this)">
             <img src="{{ asset('storage/svgs/sun.svg') }}" alt="" width="50">
           </button>
         </div>
