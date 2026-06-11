@@ -18,6 +18,13 @@ return new class extends Migration
             $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fk_comentario')->nullable()->constrained('comentarios', 'id')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        Schema::create('likes', function (Blueprint $table) {
+            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_publicacion')->nullable()->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_comentario')->nullable()->constrained('comentarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['fk_autor', 'fk_publicacion', 'fk_comentario']);
+        });
     }
 
     /**
@@ -26,5 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('likes');
     }
 };

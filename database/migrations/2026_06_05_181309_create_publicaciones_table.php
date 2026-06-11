@@ -21,6 +21,18 @@ return new class extends Migration
             $table->foreignId('fk_categoria')->constrained('categorias', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->date('fecha')->useCurrent();
         });
+
+        Schema::create('guardadas', function (Blueprint $table) {
+            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['fk_autor', 'fk_publicacion']);
+        });
+
+        Schema::create('etiquetas_publicaciones', function (Blueprint $table) {
+            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_etiqueta')->constrained('etiquetas', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['fk_publicacion', 'fk_etiqueta']);
+        });
     }
 
     /**

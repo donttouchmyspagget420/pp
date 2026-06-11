@@ -12,7 +12,7 @@ class PublicacionController extends Controller
         $tops = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->limit(5)->get();
         $recientes = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('fecha')->limit(9)->get();
 
-        return view('index', compact('tops'), compact('recientes'));
+        return view('index', compact('tops', 'recientes'));
     }
 
     public function show(): View

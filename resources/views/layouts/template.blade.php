@@ -15,7 +15,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{ asset('storage/logo_AI_GENERATED.png') }}" alt="Logo" width="100"></a>
+        <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('storage/logo_AI_GENERATED.png') }}" alt="Logo" width="100"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link active" href="{{ route('home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/categorias.html" role="button" aria-expanded="false">
+              <a class="nav-link" href="{{ route('categorias.show') }}" role="button" aria-expanded="false">
                 Categorías
               </a>
             </li>
@@ -36,8 +36,8 @@
               aria-label="Search" />
           </form>
           <div class="text-end ms-3 d-flex gap-2">
-            <a href="pages/register.html" class="btn btn-outline-info" role="button">Registrar</a>
-            <a href="pages/login.html" class="btn btn-info" role="button">Log in</a>
+            <a href="{{ route('auth.register') }}" class="btn btn-outline-info" role="button">Registrar</a>
+            <a href="{{ route('auth.login') }}" class="btn btn-info" role="button">Log in</a>
           </div>
           <button class="btn-icon ms-3" role="button" onclick="toggle(this)">
             <img src="{{ asset('storage/svgs/sun.svg') }}" alt="" width="50">

@@ -1,4 +1,4 @@
-                <div class="col-12 col-md-6 col-lg-4 mt-5">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <img src="{{ $pub->getImagen() }}" alt="card-img" class="card-img-top">
                         <div class="card-body">

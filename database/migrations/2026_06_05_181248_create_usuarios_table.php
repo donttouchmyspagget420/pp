@@ -23,6 +23,12 @@ return new class extends Migration
             $table->string('tele', 20)->unique();
             $table->string('password');
         });
+
+        Schema::create('siguidores', function (Blueprint $table) {
+            $table->foreignId('fk_siguidor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_siguido')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['fk_siguidor', 'fk_siguido']);
+        });
     }
 
     /**
@@ -31,5 +37,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('siguidores');
     }
 };

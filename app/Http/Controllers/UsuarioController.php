@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UsuarioController extends Controller
@@ -10,5 +11,11 @@ class UsuarioController extends Controller
     {
         //todo
         return view('perfil.show');
+    }
+
+    public function store(Request $request): View
+    {
+        //todo
+        return view('');
     }
 }

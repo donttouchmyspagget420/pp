@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title','baseball, huh?')
+@section('title','home')
 
 @section('content')
 
@@ -28,9 +28,9 @@
 
     <div class="container mx-auto">
         <div class="row mt-5">
-            @for ($i = 0; $i < count($recientes); $i++)
-                @include('components.card', ['pub' => $recientes[$i]])
-            @endfor
+            @foreach ($recientes as $reciente)
+                @include('components.card', ['pub' => $reciente])
+            @endforeach
         </div>
     </div>
 
