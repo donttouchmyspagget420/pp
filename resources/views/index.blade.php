@@ -3,6 +3,11 @@
 @section('title','home')
 
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ session('success') }}</strong>
+        </div>
+    @endif
 
     <h1 class="text-center"><strong>Top Noticias</strong></h1>
 

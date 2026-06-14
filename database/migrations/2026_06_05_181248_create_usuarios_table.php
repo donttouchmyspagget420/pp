@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('fk_rol')->constrained('roles', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('pfp')->nullable();
             $table->string('nombre', 100);
             $table->string('username', 100)->unique();
             $table->string('correo')->unique();
-            $table->string('ubicacion')->nullable();
-            $table->string('educacion')->nullable();
-            $table->string('tele', 20)->unique();
             $table->string('password');
+            $table->string('remember_token', 100)->nullable();
         });
 
         Schema::create('siguidores', function (Blueprint $table) {

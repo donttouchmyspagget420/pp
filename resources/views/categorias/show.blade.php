@@ -31,6 +31,10 @@
             @foreach ($publicaciones as $pub)
                 @include('components.card', ['pub' => $pub])
             @endforeach
+
+            <div class="mt-3">
+                {{ $publicaciones->links() }}
+            </div>
         </div>
       </div>
 

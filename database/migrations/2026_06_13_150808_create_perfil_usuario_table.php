@@ -12,6 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('perfil_usuarios', function (Blueprint $table) {
+            $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('pfp')->nullable();
+            $table->string('ubicacion')->nullable();
+            $table->string('educacion')->nullable();
+            $table->string('tele', 20)->unique()->nullable();
+        });
+
         Schema::create('config_usuarios', function (Blueprint $table) {
             $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->enum('color', ColorAccente::cases());
@@ -27,6 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('perfil_usuario');
         Schema::dropIfExists('config_usuarios');
     }
 };

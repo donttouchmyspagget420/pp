@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Auth\User;
 
-class Usuario extends Model
+class Usuario extends User
 {
     use HasFactory;
 
     protected $table = 'usuarios';
 
-    protected $fillable = ['fk_rol', 'pfp', 'nombre', 'username', 'correo', 'ubicacion', 'educacion', 'siguidores', 'siguiendo', 'tele', 'password'];
+    protected $fillable = ['fk_rol', 'nombre', 'username', 'correo', 'password'];
 
     protected $hidden = ['password'];
 
@@ -23,6 +23,11 @@ class Usuario extends Model
     public function configUsuario(): HasOne
     {
         return $this->hasOne(ConfigUsuario::class, 'fk_usuario');
+    }
+
+    public function perfilUsuario(): HasOne
+    {
+        return $this->hasOne(PerfilUsuario::class, 'fk_usuario');
     }
 
     public function rol(): BelongsTo

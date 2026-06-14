@@ -7,7 +7,7 @@ use App\Http\Controllers\PublicacionController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\UsuarioController;
 
-Route::get('/', [PublicacionController::class, 'index'])->name('home');
+Route::any('/', [PublicacionController::class, 'index'])->name('home');
 
 Route::get('/publicacion/{id}', [PublicacionController::class, 'show'])->name('publicacion.show')->whereNumber('id');
 

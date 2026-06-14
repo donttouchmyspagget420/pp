@@ -10,7 +10,7 @@ class UsuarioController extends Controller
     public function show(): View
     {
         //todo
-        return view('perfil.show');
+        return view('');
     }
 
     public function store(Request $request): View
