@@ -26,6 +26,7 @@ class PerfilUsuarioFactory extends Factory
             'ubicacion' => fake()->country() . '|' . fake()->city(),
             'educacion' => 'Universidad Nacional del ' . fake()->word(),
             'tele' => fake()->unique()->phoneNumber(),
+            'sobre' => fake()->catchPhrase()
         ];
     }
 }

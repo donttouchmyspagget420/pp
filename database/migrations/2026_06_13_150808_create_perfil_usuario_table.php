@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ubicacion')->nullable();
             $table->string('educacion')->nullable();
             $table->string('tele', 20)->unique()->nullable();
+            $table->string('sobre')->nullable();
         });
 
         Schema::create('config_usuarios', function (Blueprint $table) {

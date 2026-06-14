@@ -40,6 +40,11 @@ class Usuario extends User
         return $this->belongsToMany(Usuario::class, 'siguidores', 'fk_siguidor', 'fk_siguido');
     }
 
+    public function siguiendo(): BelongsToMany
+    {
+        return $this->belongsToMany(Usuario::class, 'siguidores', 'fk_siguido', 'fk_siguidor');
+    }
+
     public function likeComentario(): BelongsToMany
     {
         return $this->belongsToMany(Comentario::class, 'likes', 'fk_autor', 'fk_comentario');

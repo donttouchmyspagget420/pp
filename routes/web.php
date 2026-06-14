@@ -17,14 +17,14 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.reg
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
-
-    Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
 });
