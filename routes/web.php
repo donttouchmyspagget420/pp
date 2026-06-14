@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PublicacionController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsuarioController;
 
 Route::any('/', [PublicacionController::class, 'index'])->name('home');
@@ -27,4 +28,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });

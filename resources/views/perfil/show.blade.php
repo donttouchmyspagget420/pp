@@ -21,7 +21,7 @@
                     </div>
                     @auth
                         @if(Auth::user()->id == $usr->id)
-                            <a href="" class="btn btn-outline-info">Editar Perfil</a>
+                            <a href="" class="btn btn-outline-{{$color}}">Editar Perfil</a>
                         @endif
                     @endauth
                 </article>
@@ -60,9 +60,9 @@
                             @if(Auth::user()->id == $usr->id)
                                 <div class="d-flex flex-column mt-3">
                                     <p class="fs-5 fw-bold">Tu Dashboard:</p>
-                                    <a class="link-info" href="user/user_dashboard.html">Me Gusta</a>
-                                    <a class="link-info" href="user/user_dashboard-comentarios.html">Mí comentarios</a>
-                                    <a class="link-info" href="user/user_dashboard-destacados.html">Mí destacados</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Me Gusta</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Mí comentarios</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Mí destacados</a>
                                 </div>
                             @endif
                         @endauth
