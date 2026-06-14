@@ -13,7 +13,7 @@
 @endif
 
     <div class="d-flex align-items-center justify-content-center" style="height: 82vh !important;">
-      <form class="p-5 border" action="/loguearse" method="post">
+      <form class="p-5 border" action="/login" method="post">
         <h1 class="text-center"><strong>Log In</strong></h1>
         <div class="input-group input-group-lg mt-5">
           <input type="email" class="form-control" placeholder="correo electrónico" name="correo">
@@ -22,7 +22,7 @@
           <input type="password" class="form-control" placeholder="contraseña" name="password">
         </div>
         <div class="input-group input-group-lg mt-5">
-          <button type="submit" class="btn btn-info mx-auto">Log In</button>
+          <button type="submit" class="btn btn-{{$color}} mx-auto">Log In</button>
         </div>
       </form>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Roles;
+use App\Models\Configuracion;
 use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +66,15 @@ class AuthController extends Controller
             'fk_rol' => $rol->id,
         ]);
 
-        $usuario->configUsuario()->create();
-        $usuario->perfilUsuario()->create(['tele' => $request->tele]);
-
         Auth::login($usuario, true);
+
+        $perfilInicial = [
+            'tele' => $request->tele,
+            'pfp' => Configuracion::firstOrFail()->pfpPorDefectoUsuario
+        ];
+
+        $usuario->configUsuario()->create();
+        $usuario->perfilUsuario()->create($perfilInicial);
 
         return redirect()->route('home')->with('success', 'Registrado exisitosamente!');
     }
@@ -97,5 +103,31 @@ class AuthController extends Controller
         return back()->withErrors([
             'correo' => 'El correo o la contraseña son incorrectos.',
         ])->onlyInput('correo');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
+    }
+
+    public function remover(Request $request): RedirectResponse
+    {
+        $user = Auth::user();
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        Usuario::where('id', $user->id)->delete();
+
+        return redirect()->route('home')->with('success', 'Eliminado exisitosamente!');
     }
 }

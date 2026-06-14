@@ -54,13 +54,4 @@ class Usuario extends User
     {
         return $this->belongsToMany(Publicacion::class, 'guardadas', 'fk_autor', 'fk_publicacion');
     }
-
-    public function getPfp()
-    {
-        if (filter_var($this->pfp, FILTER_VALIDATE_URL)) {
-            return $this->pfp;
-        }
-
-        return asset('storage/pfps' . $this->pfp);
-    }
 }

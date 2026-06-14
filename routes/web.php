@@ -13,12 +13,18 @@ Route::get('/publicacion/{id}', [PublicacionController::class, 'show'])->name('p
 
 Route::get('/categorias/{idCat?}/{idEt?}', [CategoriaController::class, 'show'])->name('categorias.show')->whereNumber('idCat')->whereNumber('idEt');
 
-Route::get('/registrar', [AuthController::class, 'showRegister'])->name('auth.register');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.register');
 
-Route::get('/loguearse', [AuthController::class, 'showLogin'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
 
-Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('/registrar', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/loguearse', [AuthController::class, 'login']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
+
+    Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
+});

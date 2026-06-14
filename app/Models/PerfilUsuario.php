@@ -14,4 +14,13 @@ class PerfilUsuario extends Model
     protected $fillable = ['fk_usuario', 'pfp', 'ubicacion', 'educacion', 'tele'];
 
     public $timestamps = false;
+
+    public function getPfp()
+    {
+        if (filter_var($this->pfp, FILTER_VALIDATE_URL)) {
+            return $this->pfp;
+        }
+
+        return asset('storage/pfps/' . $this->pfp);
+    }
 }

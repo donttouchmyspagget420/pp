@@ -13,7 +13,7 @@ class Comentario extends Model
 
     protected $table = 'comentarios';
 
-    protected $fillable = ['contenido', 'fk_autor', 'fk_publicacion', 'fk_comentario', 'likes', 'respuestas'];
+    protected $fillable = ['contenido', 'fk_autor', 'fk_publicacion', 'fk_comentario'];
 
     public $timestamps = false;
 
@@ -26,11 +26,6 @@ class Comentario extends Model
     public function usuario(): BelongsTo
     {
         return $this->belongsTo(Usuario::class, 'fk_autor');
-    }
-
-    public function comentario(): BelongsTo
-    {
-        return $this->belongsTo(Comentario::class, 'fk_comentario');
     }
 
     public function likes(): BelongsToMany

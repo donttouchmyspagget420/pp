@@ -13,7 +13,7 @@
 @endif
 
 <div class="d-flex align-items-center justify-content-center" style="height: 82vh !important;">
-      <form class="p-5 border" action="/registrar" method="post">
+      <form class="p-5 border" action="/register" method="post">
         @csrf
         <h1 class="text-center"><strong>Registrar</strong></h1>
         <div class="input-group input-group-lg mt-5">
@@ -30,7 +30,7 @@
           <input type="password" class="form-control" placeholder="confirmar la contraseña" name="password_confirmation" required value="{{ old('password_confirmation') }}">
         </div>
         <div class="input-group input-group-lg mt-5">
-          <button type="submit" class="btn btn-outline-info mx-auto">Registrar</button>
+          <button type="submit" class="btn btn-outline-{{$color}} mx-auto">Registrar</button>
         </div>
       </form>
     </div>

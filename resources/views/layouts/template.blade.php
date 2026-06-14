@@ -15,7 +15,19 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('storage/logo_AI_GENERATED.png') }}" alt="Logo" width="100"></a>
+        @if (!Auth::check())
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('storage/logo_AI_GENERATED.png') }}" alt="Logo" width="100"></a>
+        @else
+            <div class="dropdown">
+                <img class="rounded-circle border border-3 border-{{ $color }}" src="{{ Auth::user()->perfilUsuario->getPfp() }}" alt="pfp" style="width: 50px" data-bs-toggle="dropdown">
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('perfil.show',['id' => Auth::user()->id]) }}">Perfil</a></li>
+                <li><a class="dropdown-item link-{{ $color }}" href="#">Dashboard</a></li>
+                <li><a class="dropdown-item link-danger" href="{{ route('logout') }}">Quitar</a></li>
+                <li><a class="dropdown-item link-danger" href="{{ route('usuario.remove') }}">Remover la cuenta</a></li>
+              </ul>
+            </div>
+        @endif
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,10 +47,12 @@
             <input class="form-control" type="search" placeholder="Buscar por palabras claves"
               aria-label="Search" />
           </form>
-          <div class="text-end ms-3 d-flex gap-2">
-            <a href="{{ route('auth.register') }}" class="btn btn-outline-info" role="button">Registrar</a>
-            <a href="{{ route('auth.login') }}" class="btn btn-info" role="button">Log in</a>
-          </div>
+            @if (!Auth::check())
+              <div class="text-end ms-3 d-flex gap-2">
+                <a href="{{ route('auth.register') }}" class="btn btn-outline-{{ $color }}" role="button">Registrar</a>
+                <a href="{{ route('auth.login') }}" class="btn btn-outline-{{ $color }}" role="button">Log in</a>
+              </div>
+            @endif
           <button class="btn-icon ms-3" role="button" onclick="toggle(this)">
             <img src="{{ asset('storage/svgs/sun.svg') }}" alt="" width="50">
           </button>

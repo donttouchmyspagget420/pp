@@ -4,10 +4,10 @@ namespace App\Enums;
 
 enum ColorAccente: string
 {
-    case AQUA = "aqua";
-    case AZUL = "azul";
-    case ROJO = "rojo";
-    case BLANCO = "blanco";
-    case NEGRO = "negro";
-    case VERDE = "verde";
+    case AQUA = "info";
+    case AZUL = "primary";
+    case ROJO = "danger";
+    case BLANCO = "light";
+    case NEGRO = "dark";
+    case VERDE = "success";
 }
