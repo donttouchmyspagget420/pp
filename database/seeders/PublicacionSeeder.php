@@ -23,8 +23,8 @@ class PublicacionSeeder extends Seeder
         $edit = Rol::where('nombre', Roles::Editor)->first();
         $editors = Usuario::where('fk_rol', $edit->id)->get();
 
-        for ($i = 0; $i < 30; $i++) {
-            Publicacion::factory()->hasAttached($usuarios->random(), [], 'likes')->hasAttached($usuarios->random(), [], 'guardadas')->hasAttached($etiquetas->random(), [], 'etiquetas')->for($categorias->random(), 'categorias')->for($editors->random(), 'autor')->create();
+        for ($i = 0; $i < 100; $i++) {
+            Publicacion::factory()->hasAttached($usuarios, [], 'likes')->hasAttached($usuarios, [], 'guardadas')->hasAttached($etiquetas->random(), [], 'etiquetas')->for($categorias->random(), 'categorias')->for($editors->random(), 'autor')->create();
         }
     }
 }

@@ -14,10 +14,8 @@ class CategoriaController extends Controller
 {
     public function show(Request $request): View
     {
-        $idCat = $request->input('categoria');
-        $idEt = $request->input('etiqueta');
-
-        $pubNum = 18;
+        $idCat = $request->categoria;
+        $idEt = $request->etiqueta;
 
         $categorias = Categoria::all();
         $etiquetas = Etiqueta::all();
@@ -34,7 +32,7 @@ class CategoriaController extends Controller
             });
         }
 
-        $publicaciones = $publicaciones->with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->paginate($pubNum);
+        $publicaciones = $publicaciones->with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->paginate(18);
 
         return view('categorias.show', compact('categorias', 'etiquetas', 'publicaciones'));
     }

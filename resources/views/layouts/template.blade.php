@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -22,7 +22,7 @@
                 <img class="rounded-circle border border-3 border-{{ $color }}" src="{{ Auth::user()->perfilUsuario->getPfp() }}" alt="pfp" style="width: 50px" data-bs-toggle="dropdown">
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item link-{{ $color }}" href="{{ route('perfil.show',['id' => Auth::user()->id]) }}">Perfil</a></li>
-                <li><a class="dropdown-item link-{{ $color }}" href="#">Dashboard</a></li>
+                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('dashboard.like')}}">Dashboard</a></li>
                 <li><a class="dropdown-item link-danger" href="{{ route('logout') }}">Quitar</a></li>
                 <li><a class="dropdown-item link-danger" href="{{ route('usuario.remove') }}">Remover la cuenta</a></li>
               </ul>
@@ -33,7 +33,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto ms-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('home') }}">Home</a>
             </li>
@@ -54,7 +54,7 @@
               </div>
             @endif
           <button class="btn-icon ms-3" role="button" onclick="toggle(this)">
-            <img src="{{ asset('storage/svgs/sun.svg') }}" alt="" width="50">
+            <img id="toggleMode" src="{{ asset('storage/svgs/sun.svg') }}" alt="" width="50">
           </button>
         </div>
       </div>

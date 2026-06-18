@@ -10,8 +10,8 @@ class PublicacionController extends Controller
 {
     public function index(): View
     {
-        $tops = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->limit(5)->get();
-        $recientes = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('fecha')->limit(9)->get();
+        $tops = Publicacion::with('autor:nombre,id', 'categorias:nombre,id')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->limit(5)->get();
+        $recientes = Publicacion::with('autor:nombre,id', 'categorias:nombre,id')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('fecha')->limit(9)->get();
 
         return view('index', compact('tops', 'recientes'));
     }

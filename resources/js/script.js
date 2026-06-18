@@ -1,6 +1,12 @@
 const str = "<form action='' method='post' class='container' ><div class='input-group'><input class='form-control' name='comentario'><input class='btn btn-outline-info' type='submit' value='enviar'></div></form>"
 let bool = false
 let dialog = null
+let html = document.documentElement
+let toggleMode = document.getElementById("toggleMode")
+
+html.setAttribute('data-bs-theme', localStorage.getItem('theme'))
+toggleMode.setAttribute('src',localStorage.getItem('toggleIcon') ?? toggleMode.getAttribute('src'))
+
 function mod(btn){
  if(!dialog){
   dialog = document.createElement('dialog')
@@ -15,19 +21,21 @@ function mod(btn){
 }
 
 function toggle(btn){
- let html = document.documentElement;
  let img = btn.querySelector('img')
  let path = img.getAttribute('src')
 
  if(html.getAttribute('data-bs-theme') == 'dark'){
   html.setAttribute('data-bs-theme', 'light')
   path = path.replace(/sun/,'moon')
-  img.setAttribute('src',path)
+  localStorage.setItem('theme','light')
  }else{
   html.setAttribute('data-bs-theme', 'dark')
   path = path.replace(/moon/,'sun')
-  img.setAttribute('src',path)
+  localStorage.setItem('theme','dark')
  }
+
+  img.setAttribute('src',path)
+  localStorage.setItem('toggleIcon',path)
 }
 
 function icon(btn){

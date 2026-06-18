@@ -12,7 +12,7 @@ Route::any('/', [PublicacionController::class, 'index'])->name('home');
 
 Route::get('/publicacion/{id}', [PublicacionController::class, 'show'])->name('publicacion.show')->whereNumber('id');
 
-Route::get('/categorias/{idCat?}/{idEt?}', [CategoriaController::class, 'show'])->name('categorias.show')->whereNumber('idCat')->whereNumber('idEt');
+Route::get('/categorias', [CategoriaController::class, 'show'])->name('categorias.show');
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.register');
 
@@ -29,5 +29,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/like', [DashboardController::class, 'like'])->name('dashboard.like');
+
+    Route::get('/dashboard/comentarios', [DashboardController::class, 'comentarios'])->name('dashboard.comentarios');
+
+    Route::get('/dashboard/destacados', [DashboardController::class, 'destacados'])->name('dashboard.destacados');
+
+    //TODO: middleware para manejar permisos de roles distintos
+    Route::get('/dashboard/misblogs', [DashboardController::class, 'misblogs'])->name('dashboard.misblogs');
+
+    Route::get('/dashboard/blogs', [DashboardController::class, 'blogs'])->name('dashboard.blogs');
 });

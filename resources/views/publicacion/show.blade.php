@@ -17,11 +17,11 @@
             </p>
           </h1>
           <div class="d-flex gap-2 fs-5">
-            <a href="{{ route('categorias.show', ['idCat' => $pub['categorias']['id']]) }}" class="link-{{$color}}">{{ $pub['categorias']['nombre'] }}</a>
+            <a href="{{ route('categorias.show', ['categoria' => $pub['categorias']['id']]) }}" class="link-{{$color}}">{{ $pub['categorias']['nombre'] }}</a>
           </div>
           <div class="d-flex gap-2 fs-5">
                 @foreach($pub['etiquetas'] as $et)
-                    <a href="{{route('categorias.show',['idEt' => $et->id])}}" class="link-{{$color}}">{{$et->nombre}}</a>
+                    <a href="{{route('categorias.show',['etiqueta' => $et->id])}}" class="link-{{$color}}">{{$et->nombre}}</a>
                 @endforeach
           </div>
           <div class="d-flex gap-2 fs-4">

@@ -4,7 +4,7 @@
 
 @section('content')
 
- <div class="container mt-5 p-5 border">
+ <div class="container mt-5 p-5 border" style="min-height: 75vh">
             <div class="row">
                 <figure class="col-12 col-md-6 col-lg-3">
                     <img src="{{ $usr->perfilUsuario->getPfp() }}" alt="pfp" class="rounded-circle" width="200">
@@ -60,9 +60,9 @@
                             @if(Auth::user()->id == $usr->id)
                                 <div class="d-flex flex-column mt-3">
                                     <p class="fs-5 fw-bold">Tu Dashboard:</p>
-                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Me Gusta</a>
-                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Mí comentarios</a>
-                                    <a class="link-{{$color}}" href="{{ route('dashboard') }}">Mí destacados</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard.like') }}">Me Gusta</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard.comentarios') }}">Mí comentarios</a>
+                                    <a class="link-{{$color}}" href="{{ route('dashboard.destacados') }}">Mí destacados</a>
                                 </div>
                             @endif
                         @endauth

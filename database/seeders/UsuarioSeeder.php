@@ -22,6 +22,9 @@ class UsuarioSeeder extends Seeder
 
         Usuario::factory()->has(ConfigUsuario::factory())->has(PerfilUsuario::factory())->for($admin)->count(1)->create();
         Usuario::factory()->has(ConfigUsuario::factory())->has(PerfilUsuario::factory())->for($editor)->count(5)->create();
-        Usuario::factory()->has(ConfigUsuario::factory())->has(PerfilUsuario::factory())->hasAttached(Usuario::factory()->has(PerfilUsuario::factory())->has(ConfigUsuario::factory())->count(5)->for($user), [], 'siguidores')->for($user)->count(5)->create();
+
+        $usuarios = Usuario::factory()->has(ConfigUsuario::factory())->has(PerfilUsuario::factory())->for($user);
+
+        $usuarios->hasAttached($usuarios, [], 'siguidores')->count(100)->create();
     }
 }

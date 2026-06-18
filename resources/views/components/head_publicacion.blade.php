@@ -7,7 +7,7 @@
                     </div>
                     <div class="col-4 mt-3">
                         <div class="d-flex gap-3">
-                            <a href="{{ route('categorias.show', $pub['categorias']['id'])}}" class="link-{{$color}}"><b> {{ $pub['categorias']['nombre'] }} </b></a>
+                            <a href="{{ route('categorias.show', ['categoria' => $pub['categorias']['id']])}}" class="link-{{$color}}"><b> {{ $pub['categorias']['nombre'] }} </b></a>
                             <p class="text-body-secondary">{{ $pub->fecha }}</p>
                         </div>
 

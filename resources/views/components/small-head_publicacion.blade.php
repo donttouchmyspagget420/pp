@@ -5,7 +5,7 @@
                                 <div class="d-flex gap-3">
                                     <a href="{{ route('perfil.show', $pub['autor']['id']) }}" class="link-{{$color}}">{{ $pub['autor']['nombre'] }}</a>
                                     <div class="d-flex gap-1">
-                                        <a href="{{ route('categorias.show', $pub['categorias']['id'])}}" class="link-{{$color}}">{{ $pub['categorias']['nombre'] }}</a>
+                                        <a href="{{ route('categorias.show', ['categoria' => $pub['categorias']['id']])}}" class="link-{{$color}}">{{ $pub['categorias']['nombre'] }}</a>
                                     </div>
                                     <p class="text-body-secondary">{{ $pub->fecha }}</p>
                                 </div>

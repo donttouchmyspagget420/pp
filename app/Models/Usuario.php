@@ -36,6 +36,10 @@ class Usuario extends User
         return $this->hasMany(Comentario::class, 'fk_autor');
     }
 
+    public function publicacion(): HasMany
+    {
+        return $this->hasMany(Publicacion::class, 'fk_autor');
+    }
 
     public function rol(): BelongsTo
     {
