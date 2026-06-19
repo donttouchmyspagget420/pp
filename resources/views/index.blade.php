@@ -8,6 +8,12 @@
             <strong>{{ session('success') }}</strong>
         </div>
     @endif
+    @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            <strong>{{ session('error') }}</strong>
+        </div>
+    @endif
+
 
     <h1 class="text-center"><strong>Top Noticias</strong></h1>
 
@@ -19,7 +25,7 @@
                 <ol class="list-group list-group-flush">
 
                 @for ($i = 1; $i < 5; $i++)
-                    @include('components.small-head_publicacion', ['pub' => $tops[$i]])
+                    @include('components.small-head_publicacion', ['pub' => $tops[$i],'order' => [1,2]])
                 @endfor
 
                 </ol>

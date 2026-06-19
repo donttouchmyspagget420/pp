@@ -19,8 +19,8 @@ class ComentarioSeeder extends Seeder
         $comentarios = [];
 
 
-        foreach ($publicaciones as $pub) {
-            array_push($comentarios, Comentario::factory()->hasAttached($usuarios->random(), [], 'likes')->for($usuarios->random())->for($pub)->create());
+        for ($i = 0; $i < 1000; $i++) {
+            array_push($comentarios, Comentario::factory()->hasAttached($usuarios->random(), [], 'likes')->for($usuarios->random())->for($publicaciones->random())->create());
         }
     }
 }

@@ -21,6 +21,11 @@ class Usuario extends User
 
     public $timestamps = false;
 
+    public function hasRole(string $rol): bool
+    {
+        return $rol == $this->rol->nombre;
+    }
+
     public function configUsuario(): HasOne
     {
         return $this->hasOne(ConfigUsuario::class, 'fk_usuario');

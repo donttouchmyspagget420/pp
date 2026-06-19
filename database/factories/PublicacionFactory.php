@@ -26,7 +26,7 @@ class PublicacionFactory extends Factory
             'titulo' => fake()->sentence(rand(1, 3), true),
             'contenido' => implode("\n\n", fake()->paragraphs(6)),
             'descripcion' => fake()->paragraph(),
-            'fecha' => now(),
+            'fecha' => fake()->dateTimeThisYear(),
         ];
     }
 }

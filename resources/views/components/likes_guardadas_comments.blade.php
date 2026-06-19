@@ -15,7 +15,7 @@
                                         <p class="text-body-secondary">{{$guardadas}}</p>
                                     </div>
                                     <div class="d-flex gap-3">
-                                        <a href="pages/post.html#comment">
+                                        <a href="{{route('publicacion.show', $id) . '#comment'}}">
                                             <figure><img role="button" width="18" src="{{ asset('storage/svgs/comment-'.$color.'.svg') }}"
                                                     alt="comments"></figure>
                                         </a>

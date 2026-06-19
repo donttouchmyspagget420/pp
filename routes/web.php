@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,13 @@ Route::get('/publicacion/{id}', [PublicacionController::class, 'show'])->name('p
 
 Route::get('/categorias', [CategoriaController::class, 'show'])->name('categorias.show');
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.register');
+Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
+Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.login');
 
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/auth/register', [AuthController::class, 'register'])->name('register');
 
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
 
@@ -34,9 +35,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/comentarios', [DashboardController::class, 'comentarios'])->name('dashboard.comentarios');
 
     Route::get('/dashboard/destacados', [DashboardController::class, 'destacados'])->name('dashboard.destacados');
+});
 
-    //TODO: middleware para manejar permisos de roles distintos
+Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
     Route::get('/dashboard/misblogs', [DashboardController::class, 'misblogs'])->name('dashboard.misblogs');
 
     Route::get('/dashboard/blogs', [DashboardController::class, 'blogs'])->name('dashboard.blogs');
+});
+
+Route::middleware(['auth', 'rol:admin'])->group(function () {
+    Route::get('/admin/reportes', [AdminController::class, 'reportes'])->name('admin.reportes');
+
+    Route::get('/admin/configuracion', [AdminController::class, 'configuracion'])->name('admin.configuracion');
+
+    Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
+
+    Route::get('/admin/editores', [AdminController::class, 'editores'])->name('admin.editores');
+
+    Route::post('/admin/configuracion', [AdminController::class, 'editConfiguracion']);
 });

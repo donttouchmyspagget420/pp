@@ -29,7 +29,7 @@
             <a href="{{ route('perfil.show', ['id' => $pub['autor']['id']]) }}" class="link-{{$color}}">{{ $pub['autor']['nombre'] }}</a>
           </div>
           <p class="text-body-secondary">{{ $pub->fecha }}</p>
-            @include('components.likes_guardadas_comments',['likes' => $pub['likes_count'],'guardadas' => $pub['guardadas_count'],'comentarios' => count($coms)])
+            @include('components.likes_guardadas_comments',['likes' => $pub['likes_count'],'guardadas' => $pub['guardadas_count'],'comentarios' => count($coms),'id' => $pub->id])
         </div>
       </div>
     </div>

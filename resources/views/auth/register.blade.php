@@ -13,7 +13,7 @@
 @endif
 
 <div class="d-flex align-items-center justify-content-center" style="height: 82vh !important;">
-      <form class="p-5 border" action="/register" method="post">
+      <form class="p-5 border" action="/auth/register" method="post">
         @csrf
         <h1 class="text-center"><strong>Registrar</strong></h1>
         <div class="input-group input-group-lg mt-5">
