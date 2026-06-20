@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -19,5 +20,11 @@ class UsuarioController extends Controller
     {
         //todo
         return view('');
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        Usuario::where('id', $id)->delete();
+        return back();
     }
 }

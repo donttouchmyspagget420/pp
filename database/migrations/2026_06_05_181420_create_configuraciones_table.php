@@ -13,6 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('configuraciones', function (Blueprint $table) {
+            $table->id();
             $table->enum('colorAccentoUsuario', ColorAccente::cases());
             $table->enum('colorAccentoEditor', ColorAccente::cases());
             $table->enum('colorAccentoAdmin', ColorAccente::cases());

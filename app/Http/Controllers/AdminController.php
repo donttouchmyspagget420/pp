@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Configuracion;
 use App\Models\Publicacion;
-use Illuminate\Http\Client\Response;
+use App\Enums\Roles;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Validation\Rule;
 use App\Enums\ColorAccente;
+use App\Models\Rol;
+use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
@@ -53,9 +55,9 @@ class AdminController extends Controller
             'colorAccentoEditor'  => ['required', Rule::enum(ColorAccente::class)],
             'colorAccentoAdmin'   => ['required', Rule::enum(ColorAccente::class)],
 
-            'pfpPorDefectoUsuario' => ['required', 'image'],
-            'pfpPorDefectoEditor'  => ['required', 'image'],
-            'pfpPorDefectoAdmin'   => ['required', 'image'],
+            'pfpPorDefectoUsuario' => ['required', 'image', 'max:5120'],
+            'pfpPorDefectoEditor'  => ['required', 'image', 'max:5120'],
+            'pfpPorDefectoAdmin'   => ['required', 'image', 'max:5120'],
 
             'removerComentariosEditores' => ['required', 'boolean'],
             'modificarComentariosUsuarios' => ['required', 'boolean'],
@@ -74,12 +76,15 @@ class AdminController extends Controller
 
             'pfpPorDefectoUsuario.required' => 'El campo pfpPorDefectoUsuario es obligatorio.',
             'pfpPorDefectoUsuario.image'    => 'El archivo de pfpPorDefectoUsuario debe ser una imagen.',
+            'pfpPorDefectoUsuario.max' => 'La imagen de pfpPorDefectoUsuario no puede superar los 5 MB.',
 
             'pfpPorDefectoEditor.required' => 'El campo pfpPorDefectoEditor es obligatorio.',
             'pfpPorDefectoEditor.image'    => 'El archivo de pfpPorDefectoEditor debe ser una imagen.',
+            'pfpPorDefectoEditor.max' => 'La imagen de pfpPorDefectoEditor no puede superar los 5 MB.',
 
             'pfpPorDefectoAdmin.required' => 'El campo pfpPorDefectoAdmin es obligatorio.',
             'pfpPorDefectoAdmin.image'    => 'El archivo de pfpPorDefectoAdmin debe ser una imagen.',
+            'pfpPorDefectoAdmin.max' => 'La imagen de pfpPorDefectoAdmin no puede superar los 5 MB.',
 
             'removerComentariosEditores.required' => 'El campo removerComentariosEditores es obligatorio.',
             'removerComentariosEditores.boolean'  => 'El campo removerComentariosEditores debe ser verdadero o falso.',
@@ -98,23 +103,43 @@ class AdminController extends Controller
             'limiteDeComentarios.max'      => 'El campo limiteDeComentarios debe ser menor o igual a 999.',
         ]);
 
-        Configuracion::update($data);
+        $files = ['pfpPorDefectoUsuario', 'pfpPorDefectoEditor', 'pfpPorDefectoAdmin'];
+
+        foreach ($files as $file) {
+            if (!$request->file($file)->isValid()) {
+                return back()->with('error', "debe subir imagen valido en campo '$file'");
+            }
+
+            $nuevoNombre = time() . '.' . $request->file($file)->extension();
+
+            $request->file($file)->storeAs('pfps', $nuevoNombre);
+
+            $data[$file] = $nuevoNombre;
+        }
+
+        Configuracion::firstOrFail()->update($data);
 
         return redirect()->route('home')->with('success', 'configuracion cambiado exitosamente');
     }
 
     public function usuarios(): View
     {
-        return view('admin.usuarios');
+        $rol = Rol::where('nombre', Roles::Usuario)->first();
+        $data = Usuario::where('fk_rol', $rol->id)->paginate(20);
+
+        return view('admin.usuarios', compact('data'));
     }
 
     public function editores(): View
     {
-        return view('admin.editores');
+        $rol = Rol::where('nombre', Roles::Editor)->first();
+        $data = Usuario::where('fk_rol', $rol->id)->paginate(20);
+
+        return view('admin.editores', compact('data'));
     }
 
-    public function configuraciones(): View
+    public function configuracion(): View
     {
-        return view('admin.configuraciones');
+        return view('admin.configuracion');
     }
 }
