@@ -22,7 +22,7 @@ class PerfilUsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'pfp' => fake()->randomElement(['default.png', 'https://picsum.photos/640/480?random=' . fake()->numberBetween(1, 10000)]),
+            'pfp' => fake()->randomElement(['default.png', 'https://placehold.co/600x400']),
             'ubicacion' => fake()->country() . '|' . fake()->city(),
             'educacion' => 'Universidad Nacional del ' . fake()->word(),
             'tele' => fake()->unique()->phoneNumber(),
