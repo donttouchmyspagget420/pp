@@ -10,26 +10,31 @@
           <div class="row">
             <ul class="d-flex gap-5 fs-4 list-unstyled">
               <li>
-                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.like')}}">Me gusta {{$data['like_publicacion_count']}}</a>
-              </li>
-                <li>
-                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.misblogs')}}">Mis blogs {{$data['publicacion_count']}}</a>
+                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.like', $data['id'])}}">Me gusta {{$data['like_publicacion_count']}}</a>
               </li>
               <li>
-                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.comentarios')}}">
+                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.comentarios', $data['id'])}}">
                   Tus Comentarios {{$data['comentario_count']}}
                 </a>
               </li>
               <li>
-                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.destacados')}}">
+                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.destacados', $data['id'])}}">
                   Tus Destacados {{$data['guardadas_publicacion_count']}}
                 </a>
               </li>
                 <li>
-                <a class="link-{{$color}}" href="{{route('dashboard.blogs')}}">
+                <a class="link-secondary link-underline-opacity-0" href="{{route('dashboard.misblogs', $data['id'])}}">Mis blogs {{$data['publicacion_count']}}</a>
+              </li>
+                <li>
+                <a class="link-{{$color}}" href="{{route('dashboard.blogs', $data['id'])}}">
                     Blogs {{$pubs->total()}}
                 </a>
               </li>
+            <li>
+            <a class="btn btn-outline-success" href="{{route('publicacion.crear')}}">
+              Crear un blog
+            </a>
+          </li>
             </ul>
           </div>
           <hr>

@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="container row mx-auto mt-5">
       <div class="col-12 col-md-6">
         <img src="{{ $pub->getImagen() }}" class="img-fluid">

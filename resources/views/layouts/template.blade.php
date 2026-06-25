@@ -21,8 +21,8 @@
             <div class="dropdown">
                 <img class="rounded-circle border border-3 border-{{ $color }}" src="{{ Auth::user()->perfilUsuario->getPfp() }}" alt="pfp" style="width: 50px" data-bs-toggle="dropdown">
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('perfil.show',['id' => Auth::user()->id]) }}">Perfil</a></li>
-                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('dashboard.like')}}">Dashboard</a></li>
+                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('perfil.show',Auth::user()->id) }}">Perfil</a></li>
+                <li><a class="dropdown-item link-{{ $color }}" href="{{ route('dashboard.like',Auth::user()->id)}}">Dashboard</a></li>
                 <li><a class="dropdown-item link-danger" href="{{ route('logout') }}">Quitar</a></li>
                 <li><a class="dropdown-item link-danger" href="{{ route('usuario.remove') }}">Remover la cuenta</a></li>
               </ul>

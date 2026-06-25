@@ -26,24 +26,32 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
 Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/perfil/edit/{id}', [UsuarioController::class, 'showEdit'])->name('perfil.edit')->whereNumber('id');
+
+    Route::post('/perfil/edit', [UsuarioController::class, 'editOrStore']);
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
 
-    Route::get('/dashboard/like', [DashboardController::class, 'like'])->name('dashboard.like');
+    Route::get('/dashboard/like/{id}', [DashboardController::class, 'like'])->name('dashboard.like')->whereNumber('id');
 
-    Route::get('/dashboard/comentarios', [DashboardController::class, 'comentarios'])->name('dashboard.comentarios');
+    Route::get('/dashboard/comentarios/{id}', [DashboardController::class, 'comentarios'])->name('dashboard.comentarios')->whereNumber('id');
 
-    Route::get('/dashboard/destacados', [DashboardController::class, 'destacados'])->name('dashboard.destacados');
+    Route::get('/dashboard/destacados/{id}', [DashboardController::class, 'destacados'])->name('dashboard.destacados')->whereNumber('id');
 });
 
 Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
-    Route::get('/dashboard/misblogs', [DashboardController::class, 'misblogs'])->name('dashboard.misblogs');
+    Route::get('/dashboard/misblogs/{id}', [DashboardController::class, 'misblogs'])->name('dashboard.misblogs')->whereNumber('id');
 
-    Route::get('/dashboard/blogs', [DashboardController::class, 'blogs'])->name('dashboard.blogs');
+    Route::get('/publicacion/create', function () {
+        return view('publicacion.create');
+    })->name('publicacion.create');
 });
 
 Route::middleware(['auth', 'rol:admin'])->group(function () {
+    Route::get('/dashboard/blogs/{id}', [DashboardController::class, 'blogs'])->name('dashboard.blogs')->whereNumber('id');
+
     Route::get('/admin/reportes', [AdminController::class, 'reportes'])->name('admin.reportes');
 
     Route::get('/admin/configuracion', [AdminController::class, 'configuracion'])->name('admin.configuracion');
@@ -53,4 +61,8 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::get('/admin/editores', [AdminController::class, 'editores'])->name('admin.editores');
 
     Route::post('/admin/configuracion', [AdminController::class, 'editConfiguracion']);
+
+    Route::get('/perfil/store', [UsuarioController::class, 'showStore'])->name('perfil.store')->whereNumber('id');
+
+    Route::post('/perfil/store', [UsuarioController::class, 'editOrStore']);
 });

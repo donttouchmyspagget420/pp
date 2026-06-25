@@ -42,7 +42,7 @@
             <tr>
                 <th scope="row">{{$usr->id}}</th>
                 <td>
-                  <a href="{{route('perfil.show',$usr->id)}}"><img src="{{$usr->perfilUsuario->getPfp()}}" alt="pfp" width="32" height="32"
+                  <a href="{{route('dashboard.like',$usr->id)}}"><img src="{{$usr->perfilUsuario->getPfp()}}" alt="pfp" width="32" height="32"
                     class="rounded-circle border border-{{$usr->perfilUsuario->color}} border-2"></a>
                 </td>
                 <td>{{$usr->nombre}}</td>

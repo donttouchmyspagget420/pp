@@ -70,7 +70,7 @@ class AuthController extends Controller
 
         $perfilInicial = [
             'tele' => $request->tele,
-            'pfp' => Configuracion::firstOrFail()->pfpPorDefectoUsuario
+            'pfp' => Configuracion::select('pfpPorDefectoUsuario')->firstOrFail()
         ];
 
         $usuario->configUsuario()->create();

@@ -22,7 +22,7 @@ class PublicacionFactory extends Factory
     public function definition(): array
     {
         return [
-            'imagen' => 'https://placehold.co/1065x680',
+            'imagen' => 'https://picsum.photos/seed/' . fake()->word() . '/1065/680',
             'titulo' => fake()->sentence(rand(1, 3), true),
             'contenido' => implode("\n\n", fake()->paragraphs(6)),
             'descripcion' => fake()->paragraph(),
