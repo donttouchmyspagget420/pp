@@ -42,10 +42,10 @@
     <hr class="mt-5">
 
     <div class="container">
-      <form action="/comentario.create" method="post" class="d-flex flex-column gap-5">
+      <form action="/comentario/store" method="post" class="d-flex flex-column gap-5">
         <label for="comment" class="fs-1">Comparta sus opiniones</label>
         <textarea name="contenido" id="comment" class="form-control" rows="10"></textarea>
-        <button type="submit" class="btn btn-lg btn-outline-info">Enviar</button>
+        <button type="submit" class="btn btn-lg btn-outline-{{$color}}">Enviar</button>
       </form>
 
       <h2 class="text-end mt-5">{{ count($coms) }} Comentarios</h2>

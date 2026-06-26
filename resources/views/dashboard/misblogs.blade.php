@@ -23,7 +23,7 @@
                 </a>
               </li>
                 <li>
-                <a class="link-{{$color}}" href="{{route('dashboard.misblogs', $data['id']}}">Mis blogs {{$pubs->total()}}</a>
+                <a class="link-{{$color}}" href="{{route('dashboard.misblogs', $data['id'])}}">Mis blogs {{$pubs->total()}}</a>
               </li>
                 @if($data->hasRole(\App\Enums\Roles::Admin->value))
                     <li>
@@ -33,7 +33,7 @@
                       </li>
                 @endif
             <li>
-            <a class="btn btn-outline-success" href="{{route('publicacion.crear')}}">
+            <a class="btn btn-outline-success" href="{{route('publicacion.store')}}">
               Crear un blog
             </a>
           </li>

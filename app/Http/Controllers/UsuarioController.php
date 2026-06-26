@@ -38,7 +38,7 @@ class UsuarioController extends Controller
             return back()->with('error', 'no hackeas por favor');
         }
 
-        $this->validate($request);
+        $imagen = $this->validate($request);
 
         if ($request->id == null) {
             $user = Usuario::create([
@@ -108,7 +108,7 @@ class UsuarioController extends Controller
     }
 
 
-    private function validate(Request $request): string
+    private function validate(Request $request)
     {
 
         $request->validate([
@@ -201,7 +201,7 @@ class UsuarioController extends Controller
             $request->file('pfp')->storeAs('pfps', $nombre);
             return $nombre;
         } else {
-            return '';
+            return null;
         }
     }
 }

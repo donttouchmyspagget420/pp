@@ -44,9 +44,13 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
     Route::get('/dashboard/misblogs/{id}', [DashboardController::class, 'misblogs'])->name('dashboard.misblogs')->whereNumber('id');
 
-    Route::get('/publicacion/create', function () {
-        return view('publicacion.create');
-    })->name('publicacion.create');
+    Route::get('/publicacion/store', [PublicacionController::class, 'showStore'])->name('publicacion.store');
+
+    Route::post('/publicacion/store', [PublicacionController::class, 'store']);
+
+    Route::get('/publicacion/edit/{id}', [PublicacionController::class, 'showEdit'])->name('publicacion.edit')->whereNumber('id');
+
+    Route::post('/publicacion/edit', [PublicacionController::class, 'edit']);
 });
 
 Route::middleware(['auth', 'rol:admin'])->group(function () {

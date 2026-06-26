@@ -38,7 +38,7 @@
                 @endif
                 @if($data->hasRole(\App\Enums\Roles::Editor->value) || $data->hasRole(\App\Enums\Roles::Admin->value))
                     <li>
-                    <a class="btn btn-outline-success" href="{{route('publicacion.crear')}}">
+                    <a class="btn btn-outline-success" href="{{route('publicacion.store')}}">
                       Crear un blog
                     </a>
                   </li>

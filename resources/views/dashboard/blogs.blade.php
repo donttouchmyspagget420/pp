@@ -31,7 +31,7 @@
                 </a>
               </li>
             <li>
-            <a class="btn btn-outline-success" href="{{route('publicacion.crear')}}">
+            <a class="btn btn-outline-success" href="{{route('publicacion.store')}}">
               Crear un blog
             </a>
           </li>
