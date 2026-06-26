@@ -29,6 +29,14 @@
           </div>
           <p class="text-body-secondary">{{ $pub->fecha }}</p>
             @include('components.likes_guardadas_comments',['likes' => $pub['likes_count'],'guardadas' => $pub['guardadas_count'],'comentarios' => count($coms),'id' => $pub->id])
+            @auth
+                @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-warning" href="{{route('publicacion.edit', $pub->id)}}">Modificar</a>
+                        <a class="btn btn-outline-danger" href="{{route('publicacion.destroy', $pub->id)}}">Eliminar</a>
+                    </div>
+                @endif
+            @endauth
         </div>
       </div>
     </div>
@@ -51,7 +59,7 @@
         <button type="submit" class="btn btn-lg btn-outline-{{$color}}">Enviar</button>
       </form>
 
-      <h2 class="text-end mt-5">{{ count($coms) }} Comentarios</h2>
+      <h2 class="text-end mt-5">{{ $coms->total() }} Comentarios</h2>
       <div class="comments d-flex flex-column gap-2 border p-5 rounded">
         @foreach($coms as $com)
             @include('components.comentario', ['com' => $com])

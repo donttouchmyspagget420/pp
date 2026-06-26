@@ -26,6 +26,7 @@
       </form>
 
 
+
       <div class="categorias border mt-5">
         <div class="row">
             @foreach ($publicaciones as $pub)

@@ -4,8 +4,9 @@ let toggleMode = document.getElementById("toggleMode")
 html.setAttribute('data-bs-theme', localStorage.getItem('theme'))
 toggleMode.setAttribute('src',localStorage.getItem('toggleIcon') ?? toggleMode.getAttribute('src'))
 
-function mod(btn){
-    let form = btn.parentElement.nextElementSibling
+function mod(btn, action){
+    let form = btn.parentElement.closest('form')
+    form.setAttribute('action', action)
     if(form.classList.contains("visually-hidden")){
         form.classList.remove("visually-hidden")
         btn.textContent = "Cerrar"

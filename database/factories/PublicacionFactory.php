@@ -23,7 +23,7 @@ class PublicacionFactory extends Factory
     {
         return [
             'imagen' => 'https://picsum.photos/seed/' . fake()->word() . '/1065/680',
-            'titulo' => fake()->sentence(rand(1, 3), true),
+            'titulo' => fake()->sentence(rand(1, 6), true),
             'contenido' => implode("\n\n", fake()->paragraphs(6)),
             'descripcion' => fake()->paragraph(),
             'fecha' => fake()->dateTimeThisYear(),

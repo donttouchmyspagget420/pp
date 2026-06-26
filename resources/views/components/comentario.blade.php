@@ -19,6 +19,7 @@
                     @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])
                         <div class="d-flex gap-2">
                             <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                            <a class="btn btn-outline-danger" href="{{route('comentario.destroy', $com->id)}}">Eliminar</a>
                         </div>
                         <form action='/comentario/edit' method='post' class="input-group visually-hidden" >
                             @csrf

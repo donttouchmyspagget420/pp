@@ -56,4 +56,16 @@ class ComentarioController extends Controller
 
         return back()->withErrors(['No tiene permisos']);
     }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $com = Comentario::findOrFail($id);
+
+        if ($com->fk_autor == Auth::id() || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
+            $com->delete();
+            return back()->with('session', 'eliminado exitosamente');
+        }
+
+        return back()->withErrors(['No tiene permisos']);
+    }
 }

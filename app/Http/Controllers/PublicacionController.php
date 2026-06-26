@@ -9,8 +9,10 @@ use App\Models\Etiqueta;
 use App\Models\Publicacion;
 use App\Models\Rol;
 use App\Models\Usuario;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicacionController extends Controller
 {
@@ -106,6 +108,18 @@ class PublicacionController extends Controller
         $coms = Comentario::with('usuario')->withCount('likes')->where('fk_publicacion', $pub->id)->paginate(10);
 
         return view('publicacion.show', compact('pub', 'coms'));
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $pub = Publicacion::findOrFail($id);
+
+        if ($pub->fk_autor == Auth::id() || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
+            $pub->delete();
+            return redirect()->route('home')->with('session', 'eliminado exitosamente');
+        }
+
+        return back()->withErrors(['No tiene permisos']);
     }
 
     private function validate(Request $request)

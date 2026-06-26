@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/comentario/store', [ComentarioController::class, 'store']);
 
     Route::post('/comentario/edit', [ComentarioController::class, 'edit']);
+
+    Route::get('/comentario/destroy/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy')->whereNumber('id');
 });
 
 Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
@@ -56,6 +58,22 @@ Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
     Route::get('/publicacion/edit/{id}', [PublicacionController::class, 'showEdit'])->name('publicacion.edit')->whereNumber('id');
 
     Route::post('/publicacion/edit', [PublicacionController::class, 'edit']);
+
+    Route::get('/publicacion/destroy/{id}', [PublicacionController::class, 'destroy'])->name('publicacion.destroy')->whereNumber('id');
+
+    Route::get('/categoria/destroy/{id}', [CategoriaController::class, 'destroyCategoria'])->name('categoria.destroy')->whereNumber('id');
+
+    Route::get('/etiqueta/destroy/{id}', [CategoriaController::class, 'destroyEtiqueta'])->name('etiqueta.destroy')->whereNumber('id');
+
+    Route::get('/categoria/edit/{id}', [CategoriaController::class, 'editCategoria'])->name('categoria.edit')->whereNumber('id');
+
+    Route::get('/etiqueta/edit/{id}', [CategoriaController::class, 'editEtiqueta'])->name('etiqueta.edit')->whereNumber('id');
+
+    Route::get('/categoria/store/{id}', [CategoriaController::class, 'storeCategoria'])->name('categoria.store')->whereNumber('id');
+
+    Route::get('/etiqueta/store/{id}', [CategoriaController::class, 'storeEtiqueta'])->name('etiqueta.store')->whereNumber('id');
+
+    Route::get('/categorias/index', [CategoriaController::class, 'index'])->name('categorias.index');
 });
 
 Route::middleware(['auth', 'rol:admin'])->group(function () {

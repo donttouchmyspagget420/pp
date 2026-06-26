@@ -57,7 +57,6 @@
                                 <p>{{ $usr->perfilUsuario->tele }}</p>
                             </div>
                         @endif
-                        <!-- solo visible a dicho usuario -->
                         @auth
                             @if(Auth::user()->id == $usr->id || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
                                 <div class="d-flex flex-column mt-3">
