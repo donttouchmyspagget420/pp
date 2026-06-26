@@ -4,11 +4,6 @@
 
 @section('content')
 
-@if(session('success'))
-        <div class="alert alert-success" role="alert">
-            <strong>{{ session('success') }}</strong>
-        </div>
-    @endif
  <div class="container mt-5 p-5 border" style="min-height: 75vh">
             <div class="row">
                 <figure class="col-12 col-md-6 col-lg-3">

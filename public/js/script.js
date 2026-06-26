@@ -1,6 +1,3 @@
-const str = "<form action='' method='post' class='container' ><div class='input-group'><input class='form-control' name='comentario'><input class='btn btn-outline-info' type='submit' value='enviar'></div></form>"
-let bool = false
-let dialog = null
 let html = document.documentElement
 let toggleMode = document.getElementById("toggleMode")
 
@@ -8,16 +5,14 @@ html.setAttribute('data-bs-theme', localStorage.getItem('theme'))
 toggleMode.setAttribute('src',localStorage.getItem('toggleIcon') ?? toggleMode.getAttribute('src'))
 
 function mod(btn){
- if(!dialog){
-  dialog = document.createElement('dialog')
-  dialog.innerHTML = str
-  document.body.appendChild(dialog)
-  dialog.showModal()
- }else{
-  dialog.close()
-  dialog.remove()
-  dialog = null
- }
+    let form = btn.parentElement.nextElementSibling
+    if(form.classList.contains("visually-hidden")){
+        form.classList.remove("visually-hidden")
+        btn.textContent = "Cerrar"
+    } else {
+        form.classList.add("visually-hidden")
+        btn.textContent = "Modificar"
+    }
 }
 
 function toggle(btn){

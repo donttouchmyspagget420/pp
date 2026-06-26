@@ -9,7 +9,6 @@ use App\Models\Etiqueta;
 use App\Models\Publicacion;
 use App\Models\Rol;
 use App\Models\Usuario;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -53,7 +52,7 @@ class PublicacionController extends Controller
         return view('publicacion.store', compact('cats', 'ets', 'usrs'));
     }
 
-    public function edit(Request $request): RedirectResponse
+    public function edit(Request $request): View
     {
         $request->validate(['id' => 'required|exists:publicaciones,id'], [
             'id.required' => 'El id es obligatoria.',
@@ -76,10 +75,10 @@ class PublicacionController extends Controller
 
         $pub->etiquetas()->sync($request->etiquetas);
 
-        return redirect()->route('publicacion.show', compact('pub', 'coms'));
+        return view('publicacion.show', compact('pub', 'coms'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): View
     {
         $imagen = $this->validate($request);
 
@@ -106,7 +105,7 @@ class PublicacionController extends Controller
         $pub = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas')->findOrFail($pub->id);
         $coms = Comentario::with('usuario')->withCount('likes')->where('fk_publicacion', $pub->id)->paginate(10);
 
-        return redirect()->route('publicacion.show', compact('pub', 'coms'));
+        return view('publicacion.show', compact('pub', 'coms'));
     }
 
     private function validate(Request $request)
@@ -120,7 +119,7 @@ class PublicacionController extends Controller
             'autor' => 'required|exists:usuarios,id',
             'fecha' => 'required|date',
             'contenido' => 'required|string',
-            'descripcion' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:500',
         ], [
             'titulo.required' => 'El título es obligatorio.',
             'titulo.string'   => 'El título debe ser texto válido.',
@@ -128,7 +127,7 @@ class PublicacionController extends Controller
 
             'descripcion.required' => 'La descripción es obligatoria.',
             'descripcion.string'   => 'La descripción debe ser texto válido.',
-            'descripcion.max'      => 'La descripción no puede tener más de 255 caracteres.',
+            'descripcion.max'      => 'La descripción no puede tener más de 500 caracteres.',
 
             'imagen.image' => 'El archivo debe ser una imagen.',
             'imagen.max'   => 'La imagen no puede superar los 5MB.',
@@ -151,13 +150,13 @@ class PublicacionController extends Controller
             'contenido.string'   => 'El contenido debe ser texto válido.'
         ]);
 
-        if ($request->file('imagen')->isValid()) {
+        if ($request->imagen != null && $request->file('imagen')->isValid()) {
             $nombre = time() . '.' . $request->file('imagen')->extension();
 
             $request->file('imagen')->storeAs('publicaciones', $nombre);
             return $nombre;
         } else {
-            return back()->with('error', 'El archivo debe ser una imagen.');
+            return null;
         }
     }
 }

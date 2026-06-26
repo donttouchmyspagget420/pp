@@ -4,14 +4,6 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <p><strong>{{ $error }}</strong></p>
-            @endforeach
-    </div>
-@endif
-
  <div class="container mt-5">
       <h1 class="text-start">Configuraciones</h1>
       <form action="/admin/configuracion" method="post" class="border p-5" enctype="multipart/form-data">

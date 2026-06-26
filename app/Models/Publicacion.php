@@ -56,6 +56,6 @@ class Publicacion extends Model
             return $this->imagen;
         }
 
-        return asset('storage/publicaciones' . $this->imagen);
+        return asset('storage/publicaciones/' . $this->imagen);
     }
 }

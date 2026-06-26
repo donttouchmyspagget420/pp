@@ -4,7 +4,7 @@
 
 @section('content')
 
-  <form action="/publicacion/edit" method="post" enctype="multipart/form-data">
+  <form action="/publicacion/store" method="post" enctype="multipart/form-data">
     @csrf
     <div class="container row mx-auto mt-5">
       <div class="col-12 col-md-6">
@@ -12,13 +12,13 @@
       </div>
       <div class="col-12 col-md-6 d-flex justify-content-around align-items-center">
         <div class="row">
-        <input class="form-control form-control-lg mb-3" type="text" placeholder=".form-control-lg" value="{{old('titulo')}}" name="titulo" required aria-label=".form-control-lg example">
+        <input class="form-control form-control-lg mb-3" type="text" placeholder="titulo" value="{{old('titulo')}}" name="titulo" required aria-label=".form-control-lg example">
         <select class="form-select" aria-label="Default select example" id="sel"   required name="categoria" >
             @foreach($cats as $cat)
                     <option value="{{$cat->id}}">{{$cat->nombre}}</option>
             @endforeach
         </select>
-        <select class="form-select" aria-label="Default select example" id="sel"   required name="etiquetas" multiple size="2">
+        <select class="form-select" aria-label="Default select example" id="sel"   required name="etiquetas[]" multiple size="2">
             @foreach($ets as $et)
                     <option value="{{$et->id}}">{{$et->nombre}}</option>
             @endforeach
@@ -26,7 +26,7 @@
           <div class="d-flex gap-2 fs-4">
             <p class="fst-italic">by</p>
           </div>
-            <select class="form-select" aria-label="Default select example" id="sel"   required name="categoria" >
+            <select class="form-select" aria-label="Default select example" id="sel"   required name="autor" >
                 @foreach($usrs as $usr)
                         <option value="{{$usr->id}}">{{$usr->nombre}}</option>
                 @endforeach
@@ -35,7 +35,6 @@
         </div>
       </div>
     </div>
-   </form>
 
     <hr class="mt-5">
 
@@ -49,6 +48,9 @@
         {{old('contenido')}}
         </textarea>
 
+    <input type="submit" value="Publicar" class="text-center btn btn-outline-{{$color}}">
     </div>
+
+   </form>
 
 @endsection

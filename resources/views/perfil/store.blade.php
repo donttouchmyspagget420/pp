@@ -4,15 +4,6 @@
 
 @section('content')
 
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <p><strong>{{ $error }}</strong></p>
-            @endforeach
-    </div>
-@endif
-
  <div class="container mt-5 p-5 border" style="min-height: 75vh">
     <form action="/perfil/store" method="post" enctype="multipart/form-data">
         @csrf

@@ -2,7 +2,7 @@
           <img width="50" height="50" src="{{$com['usuario']->perfilUsuario->getPfp() }}" alt="avatar" class="rounded-circle">
           <div class="container">
             <h4>{{ $com['usuario']['nombre'] }}</h4>
-            <a href="perfil.html?username=" class="link-{{$color}} fs-5">{{ $com['usuario']['username'] }}</a>
+            <a href="{{route('perfil.show',$com['usuario']['id'])}}" class="link-{{$color}} fs-5">{{'@' . $com['usuario']['username'] }}</a>
             <p class="fs-6">
                 {{ $com->contenido }}
             </p>
@@ -12,7 +12,23 @@
                   <figure><img src="{{ asset('storage/svgs/heart-'.$color.'.svg') }}" alt="heart" width="25"></figure>
                 </button>
                 <p>{{ $com['likes_count'] }}</p>
+
               </div>
             </div>
+                @auth
+                    @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                        </div>
+                        <form action='/comentario/edit' method='post' class="input-group visually-hidden" >
+                            @csrf
+                            <input type="hidden" value="{{$com->id}}" name="id">
+                            <input type="hidden" value="{{$com['usuario']['id']}}" name="fk_autor">
+                            <input type="hidden" value="{{$com['fk_publicacion']}}" name="fk_publicacion">
+                            <input class='form-control' name='contenido'>
+                            <input class='btn btn-outline-{{$color}}' type='submit' value='enviar'>
+                        </form>
+                    @endif
+                @endauth
         </div>
     </div>

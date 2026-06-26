@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PublicacionController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsuarioController;
 
@@ -28,8 +29,6 @@ Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.sho
 Route::middleware(['auth'])->group(function () {
     Route::get('/perfil/edit/{id}', [UsuarioController::class, 'showEdit'])->name('perfil.edit')->whereNumber('id');
 
-    Route::post('/perfil/edit', [UsuarioController::class, 'editOrStore']);
-
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/usuario/remover', [AuthController::class, 'remover'])->name('usuario.remove');
@@ -39,6 +38,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/comentarios/{id}', [DashboardController::class, 'comentarios'])->name('dashboard.comentarios')->whereNumber('id');
 
     Route::get('/dashboard/destacados/{id}', [DashboardController::class, 'destacados'])->name('dashboard.destacados')->whereNumber('id');
+
+    Route::post('/perfil/edit', [UsuarioController::class, 'editOrStore']);
+
+    Route::post('/comentario/store', [ComentarioController::class, 'store']);
+
+    Route::post('/comentario/edit', [ComentarioController::class, 'edit']);
 });
 
 Route::middleware(['auth', 'rol:admin,editor'])->group(function () {

@@ -43,6 +43,9 @@
 
     <div class="container">
       <form action="/comentario/store" method="post" class="d-flex flex-column gap-5">
+        @csrf
+        <input type="hidden" value="{{Auth::id()}}" name="fk_autor">
+        <input type="hidden" value="{{$pub->id}}" name="fk_publicacion">
         <label for="comment" class="fs-1">Comparta sus opiniones</label>
         <textarea name="contenido" id="comment" class="form-control" rows="10"></textarea>
         <button type="submit" class="btn btn-lg btn-outline-{{$color}}">Enviar</button>

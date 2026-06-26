@@ -60,10 +60,22 @@
       </div>
     </nav>
   </header>
+    @if(session('success'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ session('success') }}</strong>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p><strong>{{ $error }}</strong></p>
+                @endforeach
+        </div>
+    @endif
 
-        <section class="mt-5">
+    <section class="mt-5">
         @yield('content')
-        </section>
+    </section>
 
 
   <!--                                                                                       VOOTER                                                                -->

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('imagen');
             $table->string('titulo');
             $table->text('contenido');
-            $table->string('descripcion');
+            $table->string('descripcion', 500);
             $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fk_categoria')->constrained('categorias', 'id')->onUpdate('cascade')->onDelete('cascade');
             $table->date('fecha')->useCurrent();
