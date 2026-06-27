@@ -5,14 +5,19 @@ html.setAttribute('data-bs-theme', localStorage.getItem('theme'))
 toggleMode.setAttribute('src',localStorage.getItem('toggleIcon') ?? toggleMode.getAttribute('src'))
 
 function mod(btn, action){
-    let form = btn.parentElement.closest('form')
+    let form = btn.parentElement.nextElementSibling.querySelector('form')
     form.setAttribute('action', action)
     if(form.classList.contains("visually-hidden")){
         form.classList.remove("visually-hidden")
         btn.textContent = "Cerrar"
     } else {
         form.classList.add("visually-hidden")
-        btn.textContent = "Modificar"
+        if(action.includes('edit')){
+            btn.textContent = "Modificar"
+        }
+        if(action.includes('store')){
+            btn.textContent = "Crear"
+        }
     }
 }
 

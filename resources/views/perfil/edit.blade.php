@@ -4,7 +4,7 @@
 
 @section('content')
 
- <div class="container mt-5 p-5 border" style="min-height: 75vh">
+ <div class="container mt-5 p-5 border">
     <form action="/perfil/edit" method="post" enctype="multipart/form-data">
         @csrf
 

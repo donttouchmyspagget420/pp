@@ -18,17 +18,19 @@
                 @auth
                     @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])
                         <div class="d-flex gap-2">
-                            <button class="btn btn-outline-warning" onclick="mod(this)">Modificar</button>
+                            <button class="btn btn-outline-warning" onclick="mod(this,'/comentario/edit')">Modificar</button>
                             <a class="btn btn-outline-danger" href="{{route('comentario.destroy', $com->id)}}">Eliminar</a>
                         </div>
-                        <form action='/comentario/edit' method='post' class="input-group visually-hidden" >
-                            @csrf
-                            <input type="hidden" value="{{$com->id}}" name="id">
-                            <input type="hidden" value="{{$com['usuario']['id']}}" name="fk_autor">
-                            <input type="hidden" value="{{$com['fk_publicacion']}}" name="fk_publicacion">
-                            <input class='form-control' name='contenido'>
-                            <input class='btn btn-outline-{{$color}}' type='submit' value='enviar'>
-                        </form>
+                        <div>
+                            <form action='' method='post' class="input-group visually-hidden" >
+                                @csrf
+                                <input type="hidden" value="{{$com->id}}" name="id">
+                                <input type="hidden" value="{{$com['usuario']['id']}}" name="fk_autor">
+                                <input type="hidden" value="{{$com['fk_publicacion']}}" name="fk_publicacion">
+                                <input class='form-control' name='contenido'>
+                                <input class='btn btn-outline-{{$color}}' type='submit' value='enviar'>
+                            </form>
+                        </div>
                     @endif
                 @endauth
         </div>

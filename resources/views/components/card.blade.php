@@ -15,7 +15,7 @@
                                 @include('components.likes_guardadas_comments',['likes' => $pub['likes_count'],'guardadas' => $pub['guardadas_count'],'comentarios' => $pub['comentario_count'],'id' => $pub->id])
                             <p class="card-text text-body-secondary"><i>{{ $pub->fecha }}</i></p>
                             <hr>
-                                    <div class="d-flex gap-2">
+                                    <div class="d-flex gap-5">
                                         <a href="{{ route('publicacion.show',$pub->id) }}" class="btn btn-outline-{{ $color }}" role="button">Leer Más</a>
                                         @auth
                                             @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])

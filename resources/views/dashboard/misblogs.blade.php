@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container mt-5" style="min-height: 75vh">
+    <div class="container mt-5">
         <h1 class="text-start">Dashboard</h1>
           <hr>
           <div class="row">
@@ -32,8 +32,9 @@
                         </a>
                       </li>
                 @endif
+            <li><p class="text-{{$color}}">|</p></li>
             <li>
-            <a class="btn btn-outline-success" href="{{route('publicacion.store')}}">
+            <a class="btn btn-outline-{{$color}}" href="{{route('publicacion.store')}}">
               Crear un blog
             </a>
           </li>

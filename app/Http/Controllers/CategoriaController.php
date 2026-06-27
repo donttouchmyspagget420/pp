@@ -25,8 +25,19 @@ class CategoriaController extends Controller
 
     public function show(Request $request): View
     {
+        $request->validate([
+            'categoria' => 'nullable|exists:categorias,id',
+            'etiqueta' => 'nullable|array|min:1',
+            'etiqueta.*' => 'exists:etiquetas,id'
+        ], [
+            'categoria.exists' => 'La categoría seleccionada no es válida.',
+            'etiqueta.*.exists' => 'La etiqueta seleccionada no es válida.',
+            'etiqueta.array' => 'El campo etiqueta debe ser un arreglo válido.',
+            'etiqueta.min'   => 'Debes proporcionar al menos un elemento en etiqueta.',
+        ]);
+
         $idCat = $request->categoria;
-        $idEt = $request->etiqueta;
+        $arrEt = $request->etiqueta;
 
         $categorias = Categoria::all();
         $etiquetas = Etiqueta::all();
@@ -37,13 +48,13 @@ class CategoriaController extends Controller
             $publicaciones = $publicaciones->where('fk_categoria', $idCat);
         }
 
-        if ($idEt != null) {
-            $publicaciones = $publicaciones->whereHas('etiquetas', function (Builder $query) use ($idEt) {
-                $query->where('fk_etiqueta', $idEt);
+        if ($arrEt != null) {
+            $publicaciones = $publicaciones->whereHas('etiquetas', function (Builder $query) use ($arrEt) {
+                $query->whereIn('fk_etiqueta', $arrEt);
             });
         }
 
-        $publicaciones = $publicaciones->with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->paginate(18);
+        $publicaciones = $publicaciones->with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas', 'comentario')->orderByDesc('likes_count')->paginate(18)->withQueryString();
 
         return view('categorias.show', compact('categorias', 'etiquetas', 'publicaciones'));
     }
@@ -54,7 +65,7 @@ class CategoriaController extends Controller
 
         $cat = Categoria::findOrFail($data['id']);
 
-        $cat->update($data['nombre']);
+        $cat->update($data);
 
         return back()->with('session', 'cambiado exitosamente');
     }
@@ -63,9 +74,9 @@ class CategoriaController extends Controller
     {
         $data = $this->validate($request, 'etiquetas', true);
 
-        $et = Categoria::findOrFail($data['id']);
+        $et = Etiqueta::findOrFail($data['id']);
 
-        $et->update($data['nombre']);
+        $et->update($data);
 
         return back()->with('session', 'cambiado exitosamente');
     }
@@ -74,7 +85,7 @@ class CategoriaController extends Controller
     {
         $data = $this->validate($request, 'categorias', false);
 
-        Categoria::create($data['nombre']);
+        Categoria::create($data);
 
         return back()->with('session', 'creado exitosamente');
     }
@@ -83,7 +94,7 @@ class CategoriaController extends Controller
     {
         $data = $this->validate($request, 'etiquetas', false);
 
-        Etiqueta::create($data['nombre']);
+        Etiqueta::create($data);
 
         return back()->with('session', 'creado exitosamente');
     }
@@ -99,7 +110,7 @@ class CategoriaController extends Controller
 
     public function destroyEtiqueta(int $id): RedirectResponse
     {
-        $et = Categoria::findOrFail($id);
+        $et = Etiqueta::findOrFail($id);
 
         $et->delete();
 
@@ -108,17 +119,24 @@ class CategoriaController extends Controller
 
     private function validate(Request $request, string $table, bool $required)
     {
-        $data = $request->validate([
-            'id' => ($required) ? 'required' : 'nullable' . '|exists:' . $table . ',id',
+        $rules = [
             'nombre' => 'required|string|max:20|unique:' . $table . ',nombre'
-        ], [
-            'id.required'     => 'El identificador es obligatorio.',
-            'id.exists'     => 'El identificador no existe.',
-            'nombre.required' => 'El contenido es obligatorio.',
-            'nombre.string'   => 'El contenido debe ser un texto válido.',
-            'nombre.max'      => 'El contenido no puede tener más de 20 caracteres.',
-            'nombre.unique'   => 'El contenido ya existe.',
-        ]);
+        ];
+
+        $msgs = [
+            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre.string'   => 'El nombre debe ser un texto válido.',
+            'nombre.max'      => 'El nombre no puede tener más de 20 caracteres.',
+            'nombre.unique'   => 'El nombre ya existe.',
+        ];
+
+        if ($required) {
+            $rules['id'] = 'required|exists:' . $table . ',id';
+            $msgs['id.required'] = 'El identificador es obligatorio.';
+            $msgs['id.exists'] = 'El identificador no existe.';
+        }
+
+        $data = $request->validate($rules, $msgs);
 
         return $data;
     }

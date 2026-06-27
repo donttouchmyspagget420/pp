@@ -4,26 +4,11 @@
 
 @section('content')
 
- <div class="container mt-5" style="min-height:75vh">
+ <div class="container mt-5" >
       <h1 class="text-start">Gestión de Editores</h1>
       <hr>
-      <form action="" class="input-group mt-5" method="get">
-        <select class="form-select" id="inputGroupSelect02">
-          <option selected>Seleccione...</option>
-          @foreach($data as $usr)
-            <option value="{{$usr->id}}">{{$usr->correo}}</option>
-          @endforeach
-        </select>
-        <input type="radio" class="btn-check" id="btn-check" name="accion" value="modificar">
-        <label class="btn btn-outline-warning" for="btn-check">Modificar</label>
-        <input type="radio" class="btn-check" id="btn-check2" name="accion" value="eliminar">
-        <label class="btn btn-outline-danger" for="btn-check2">Eliminar</label>
-        <input type="radio" class="btn-check" id="btn-check3" name="accion" value="crear">
-        <label class="btn btn-outline-success" for="btn-check3">Crear un usuario</label>
-        <button class="btn btn-outline-info" type="submit">Enviar</button>
-      </form>
-      <h1 class="d-block d-lg-none mt-5 text-center">No podes verlo si escritorio</h1>
-      <table class="table mt-5 d-none d-lg-block">
+    <div class="table-responsive">
+      <table class="table mt-5">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -35,6 +20,8 @@
             <th scope="col">Educación</th>
             <th scope="col">Número de Teléfono</th>
             <th scope="col">Contraseña</th>
+            <th scope="col"></th>
+            <th scope="col">  <a class="btn btn-outline-{{$color}}" href="{{route('perfil.store')}}">Crear</a ></th>
           </tr>
         </thead>
         <tbody>
@@ -52,13 +39,17 @@
                 <td>{{$usr->perfilUsuario->educacion}}</td>
                 <td>{{$usr->perfilUsuario->tele}}</td>
                 <td>******************</td>
+       <td> <a class="btn btn-outline-warning" href="{{route('perfil.edit',$usr->id)}}">Modificar</a></td>
+
+       <td> <a class="btn btn-outline-danger" href="{{route('perfil.destroy',$usr->id)}}" >Eliminar</a></td>
             </tr>
             @endforeach
         </tbody>
 
-      </table>
-
         {{$data->links()}}
+      </table>
+</div>
+
 
 @endsection
 

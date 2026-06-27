@@ -4,7 +4,7 @@
 
 @section('content')
 
- <div class="container mt-5 p-5 border" style="min-height: 75vh">
+ <div class="container mt-5 p-5 border">
             <div class="row">
                 <figure class="col-12 col-md-6 col-lg-3">
                     <img src="{{ $usr->perfilUsuario->getPfp() }}" alt="pfp" class="rounded-circle" width="200" height="200">

@@ -76,7 +76,7 @@ class AuthController extends Controller
         $usuario->configUsuario()->create();
         $usuario->perfilUsuario()->create($perfilInicial);
 
-        return redirect()->route('home')->with('success', 'Registrado exisitosamente!');
+        return redirect()->route('perfil.show', Auth::id())->with('success', 'Registrado exisitosamente!');
     }
 
     public function login(Request $request): RedirectResponse
@@ -97,7 +97,7 @@ class AuthController extends Controller
         if (Auth::attempt($data, true)) {
             $request->session()->regenerate();
 
-            return redirect()->route('home')->with('success', 'Logueado exisitosamente!');
+            return redirect()->route('dashboard.like', Auth::id())->with('success', 'Logueado exisitosamente!');
         }
 
         return back()->withErrors([

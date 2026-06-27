@@ -28,8 +28,9 @@ class UsuarioController extends Controller
 
     public function destroy(int $id): RedirectResponse
     {
-        Usuario::where('id', $id)->delete();
-        return back();
+        $usr = Usuario::findOrFail($id);
+        $usr->delete();
+        return back()->with('success', 'eliminado exitosamente');
     }
 
     public function editOrStore(Request $request): RedirectResponse

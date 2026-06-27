@@ -12,9 +12,9 @@ use App\Http\Controllers\UsuarioController;
 
 Route::any('/', [PublicacionController::class, 'index'])->name('home');
 
-Route::get('/publicacion/{id}', [PublicacionController::class, 'show'])->name('publicacion.show')->whereNumber('id');
+Route::get('/publicacion/show/{id}', [PublicacionController::class, 'show'])->name('publicacion.show')->whereNumber('id');
 
-Route::get('/categorias', [CategoriaController::class, 'show'])->name('categorias.show');
+Route::get('/categorias/show', [CategoriaController::class, 'show'])->name('categorias.show');
 
 Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');
 
@@ -24,7 +24,7 @@ Route::post('/auth/register', [AuthController::class, 'register'])->name('regist
 
 Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('/perfil/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
+Route::get('/perfil/show/{id}', [UsuarioController::class, 'show'])->name('perfil.show')->whereNumber('id');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/perfil/edit/{id}', [UsuarioController::class, 'showEdit'])->name('perfil.edit')->whereNumber('id');
@@ -65,15 +65,15 @@ Route::middleware(['auth', 'rol:admin,editor'])->group(function () {
 
     Route::get('/etiqueta/destroy/{id}', [CategoriaController::class, 'destroyEtiqueta'])->name('etiqueta.destroy')->whereNumber('id');
 
-    Route::get('/categoria/edit/{id}', [CategoriaController::class, 'editCategoria'])->name('categoria.edit')->whereNumber('id');
-
-    Route::get('/etiqueta/edit/{id}', [CategoriaController::class, 'editEtiqueta'])->name('etiqueta.edit')->whereNumber('id');
-
-    Route::get('/categoria/store/{id}', [CategoriaController::class, 'storeCategoria'])->name('categoria.store')->whereNumber('id');
-
-    Route::get('/etiqueta/store/{id}', [CategoriaController::class, 'storeEtiqueta'])->name('etiqueta.store')->whereNumber('id');
-
     Route::get('/categorias/index', [CategoriaController::class, 'index'])->name('categorias.index');
+
+    Route::post('/categoria/edit', [CategoriaController::class, 'editCategoria']);
+
+    Route::post('/etiqueta/edit', [CategoriaController::class, 'editEtiqueta']);
+
+    Route::post('/categoria/store', [CategoriaController::class, 'storeCategoria']);
+
+    Route::post('/etiqueta/store', [CategoriaController::class, 'storeEtiqueta']);
 });
 
 Route::middleware(['auth', 'rol:admin'])->group(function () {
@@ -87,9 +87,11 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
 
     Route::get('/admin/editores', [AdminController::class, 'editores'])->name('admin.editores');
 
-    Route::post('/admin/configuracion', [AdminController::class, 'editConfiguracion']);
+    Route::get('/perfil/destroy/{id}', [UsuarioController::class, 'destroy'])->name('perfil.destroy')->whereNumber('id');
 
-    Route::get('/perfil/store', [UsuarioController::class, 'showStore'])->name('perfil.store')->whereNumber('id');
+    Route::get('/perfil/store', [UsuarioController::class, 'showStore'])->name('perfil.store');
+
+    Route::post('/admin/configuracion', [AdminController::class, 'editConfiguracion']);
 
     Route::post('/perfil/store', [UsuarioController::class, 'editOrStore']);
 });

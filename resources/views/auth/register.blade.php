@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="d-flex align-items-center justify-content-center" style="height: 82vh !important;">
+<div class="d-flex align-items-center justify-content-center" >
       <form class="p-5 border" action="/auth/register" method="post">
         @csrf
         <h1 class="text-center"><strong>Registrar</strong></h1>

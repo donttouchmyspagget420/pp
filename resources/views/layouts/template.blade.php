@@ -42,6 +42,35 @@
                 Categorías
               </a>
             </li>
+            @auth
+                @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::user()->hasRole(\App\Enums\Roles::Editor->value))
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('categorias.index') }}" role="button" aria-expanded="false">
+                       Gestión de Categorías
+                      </a>
+                    </li>
+                @endif
+                @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('admin.usuarios') }}" role="button" aria-expanded="false">
+                        Usuarios
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('admin.editores') }}" role="button" aria-expanded="false">
+                        Editores
+                      </a>
+                    </li>                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('admin.reportes') }}" role="button" aria-expanded="false">
+                        Reportes
+                      </a>
+                    </li>                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('admin.configuracion') }}" role="button" aria-expanded="false">
+                        Configuración
+                      </a>
+                    </li>
+                @endif
+            @endauth
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control" type="search" placeholder="Buscar por palabras claves"
@@ -73,7 +102,7 @@
         </div>
     @endif
 
-    <section class="mt-5">
+    <section class="mt-5" style="min-height:75vh !important">
         @yield('content')
     </section>
 

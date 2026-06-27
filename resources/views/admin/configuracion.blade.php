@@ -133,8 +133,8 @@
           </div>
         </div>
 
-        <div class="row">
-            <input type="submit" class="btn btn-{{$color}} mx-auto" value="Enviar">
+        <div class="row mt-5">
+            <input type="submit" class="btn btn-outline-{{$color}} mx-auto" value="Enviar">
         </div>
       </form>
     </div>
