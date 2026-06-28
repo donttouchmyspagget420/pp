@@ -46,6 +46,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/comentario/edit', [ComentarioController::class, 'edit']);
 
     Route::get('/comentario/destroy/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy')->whereNumber('id');
+
+    Route::get('/usuario/{idUsuario}/like/publicacion/{idPublicacion}', [PublicacionController::class, 'like'])->name('publicacion.like')->whereNumber('idUsuario')->whereNumber('idPublicacion');
+
+    Route::get('/usuario/{idUsuario}/guardar/bookmark/{idPublicacion}', [PublicacionController::class, 'bookmark'])->name('publicacion.bookmark')->whereNumber('idUsuario')->whereNumber('idPublicacion');
+
+    Route::get('/usuario/{idUsuario}/like/comentario/{idComentario}', [ComentarioController::class, 'like'])->name('comentario.like')->whereNumber('idUsuario')->whereNumber('idComentario');
 });
 
 Route::middleware(['auth', 'rol:admin,editor'])->group(function () {

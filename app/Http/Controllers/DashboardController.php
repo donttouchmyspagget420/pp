@@ -39,7 +39,7 @@ class DashboardController extends Controller
             $data['blogs_count'] = Publicacion::count();
         }
 
-        $coms = $user->comentario()->with('usuario:nombre,id')->withCount('likes')->paginate(4);
+        $coms = $user->comentario()->with('usuario:nombre,username,id')->withCount('likes')->paginate(4);
 
         return View('dashboard.comentarios', compact('data', 'coms', 'user'));
     }

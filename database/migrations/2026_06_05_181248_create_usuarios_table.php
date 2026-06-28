@@ -18,7 +18,7 @@ return new class extends Migration
 
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fk_rol')->constrained('roles', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_rol')->nullable()->constrained('roles', 'id')->cascadeOnUpdate()->nullOnDelete();
             $table->string('nombre', 100);
             $table->string('username', 100)->unique();
             $table->string('correo')->unique();
@@ -27,8 +27,8 @@ return new class extends Migration
         });
 
         Schema::create('siguidores', function (Blueprint $table) {
-            $table->foreignId('fk_siguidor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('fk_siguido')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_siguidor')->nullable()->constrained('usuarios', 'id')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('fk_siguido')->nullable()->constrained('usuarios', 'id')->cascadeOnUpdate()->nullOnDelete();
             $table->unique(['fk_siguidor', 'fk_siguido']);
         });
     }

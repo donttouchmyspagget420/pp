@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
             $table->string('contenido', 500);
-            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->cascadeOnUpdate();
+            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->cascadeOnUpdate();
         });
 
         Schema::create('likes', function (Blueprint $table) {
-            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('fk_publicacion')->nullable()->constrained('publicaciones', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('fk_comentario')->nullable()->constrained('comentarios', 'id')->onUpdate('cascade')->onDelete('cascade');
-            $table->unique(['fk_autor', 'fk_publicacion', 'fk_comentario']);
+            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->cascadeOnUpdate();
+            $table->foreignId('fk_publicacion')->nullable()->constrained('publicaciones', 'id')->cascadeOnUpdate();
+            $table->foreignId('fk_comentario')->nullable()->constrained('comentarios', 'id')->cascadeOnUpdate();
+            $table->unique(['fk_autor', 'fk_publicacion']);
+            $table->unique(['fk_autor', 'fk_comentario']);
         });
     }
 

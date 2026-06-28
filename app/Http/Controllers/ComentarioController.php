@@ -68,4 +68,18 @@ class ComentarioController extends Controller
 
         return back()->withErrors(['No tiene permisos']);
     }
+
+    public function like(int $idUsuario, int $idComentario)
+    {
+        $like = Comentario::findOrFail($idComentario)->likes();
+
+        $exists = $like->wherePivot('fk_autor', $idUsuario)->exists();
+
+        if ($exists) {
+            $like->where('fk_autor', $idUsuario)->detach();
+        } else {
+            $like->attach(['fk_autor' => $idUsuario]);
+        }
+        return back();
+    }
 }

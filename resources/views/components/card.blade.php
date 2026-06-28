@@ -18,7 +18,7 @@
                                     <div class="d-flex gap-5">
                                         <a href="{{ route('publicacion.show',$pub->id) }}" class="btn btn-outline-{{ $color }}" role="button">Leer Más</a>
                                         @auth
-                                            @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $com['usuario']['id'])
+                                            @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::id() == $pub['autor']['id'])
                                                     <a class="btn btn-outline-warning" href="{{route('publicacion.edit', $pub->id)}}">Modificar</a>
                                                     <a class="btn btn-outline-danger" href="{{route('publicacion.destroy', $pub->id)}}">Eliminar</a>
                                             @endif

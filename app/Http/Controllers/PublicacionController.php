@@ -173,4 +173,32 @@ class PublicacionController extends Controller
             return null;
         }
     }
+
+    public function like(int $idUsuario, int $idPublicacion): RedirectResponse
+    {
+        $like = Publicacion::findOrFail($idPublicacion)->likes();
+
+        $exists = $like->wherePivot('fk_autor', $idUsuario)->exists();
+
+        if ($exists) {
+            $like->where('fk_autor', $idUsuario)->detach();
+        } else {
+            $like->attach(['fk_autor' => $idUsuario]);
+        }
+        return back();
+    }
+
+    public function bookmark(int $idUsuario, int $idPublicacion)
+    {
+        $guardar = Publicacion::findOrFail($idPublicacion)->guardadas();
+
+        $exists = $guardar->wherePivot('fk_autor', $idUsuario)->exists();
+
+        if ($exists) {
+            $guardar->where('fk_autor', $idUsuario)->detach();
+        } else {
+            $guardar->attach(['fk_autor' => $idUsuario]);
+        }
+        return back();
+    }
 }

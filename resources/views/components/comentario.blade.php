@@ -8,9 +8,15 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <button class="btn-icon" onclick="icon(this)">
-                  <figure><img src="{{ asset('storage/svgs/heart-'.$color.'.svg') }}" alt="heart" width="25"></figure>
-                </button>
+                <a href="{{route('comentario.like',['idUsuario' => Auth::id() ?? 0, 'idComentario' => $com->id])}}" class="btn-icon">
+                  <figure>
+                        @if(Auth::user()->likeComentario->contains($com->id))
+                            <img src="{{ asset('storage/svgs/heart-filled-'.$color.'.svg') }}" alt="heart" width="25">
+                        @else
+                            <img src="{{ asset('storage/svgs/heart-'.$color.'.svg') }}" alt="heart" width="25">
+                        @endif
+                  </figure>
+                </a>
                 <p>{{ $com['likes_count'] }}</p>
 
               </div>
