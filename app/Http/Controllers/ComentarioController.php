@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\Roles;
 use App\Models\Comentario;
+use App\Models\Configuracion;
 use App\Models\Usuario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,13 +14,30 @@ class ComentarioController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
-        $data = $this->validate($request);
-        Comentario::create($data);
-        return back()->with('success', 'creado exitosamente');
+        $usr = Usuario::findOrFail(Auth::id())->withCount('comentario');
+        $conf = Configuracion::firstOrFail();
+        if ($usr['comentario_count'] < $conf->limiteDeComentarios) {
+            $data = $this->validate($request);
+            Comentario::create($data);
+            return back()->with('success', 'creado exitosamente');
+        }
+        return back()->withErrors(['demasiado comentarios']);
     }
 
     public function edit(Request $request): RedirectResponse
     {
+        $usr = Usuario::findOrFail(Auth::id());
+
+        if (!$usr->hasRole(Roles::Admin->value)) {
+            if (!$usr == $request->fk_autor) {
+                return back()->withErrors(['no tiene permisos']);
+            }
+            $conf = Configuracion::firstOrFail();
+            if ($usr->hasRole(Roles::Usuario->value) && (!$conf->modificarComentariosUsuarios)) {
+                return back()->withErrors(['no tiene permisos']);
+            }
+        }
+
         $data = $this->validate($request);
         $request->validate(['id' => 'required|exists:comentarios,id'], [
             'id.required' => 'El id es obligatorio.',
@@ -59,9 +77,10 @@ class ComentarioController extends Controller
 
     public function destroy(int $id): RedirectResponse
     {
+        $usr = Usuario::findOrFail(Auth::id());
         $com = Comentario::findOrFail($id);
 
-        if ($com->fk_autor == Auth::id() || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
+        if (($usr->hasRole(Roles::Editor->value) && Configuracion::firstOrFail()->removerComentariosEditores) || ($usr->hasRole(Roles::Usuario->value) && $com->fk_autor == Auth::id()) || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
             $com->delete();
             return back()->with('session', 'eliminado exitosamente');
         }

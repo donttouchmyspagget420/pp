@@ -14,6 +14,8 @@ Route::any('/', [PublicacionController::class, 'index'])->name('home');
 
 Route::get('/publicacion/show/{id}', [PublicacionController::class, 'show'])->name('publicacion.show')->whereNumber('id');
 
+Route::get('/publicacion/search', [PublicacionController::class, 'search'])->name('publicacion.search');
+
 Route::get('/categorias/show', [CategoriaController::class, 'show'])->name('categorias.show');
 
 Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.register');

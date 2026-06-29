@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Roles;
 use App\Models\Categoria;
 use App\Models\Comentario;
+use App\Models\Configuracion;
 use App\Models\Etiqueta;
 use App\Models\Publicacion;
 use App\Models\Rol;
@@ -80,34 +81,41 @@ class PublicacionController extends Controller
         return view('publicacion.show', compact('pub', 'coms'));
     }
 
-    public function store(Request $request): View
+    public function store(Request $request)
     {
-        $imagen = $this->validate($request);
+        $usr = Usuario::findOrFail(Auth::id())->withCount('publicacion');
+        $conf = Configuracion::firstOrFail();
 
-        $request->validate([
-            'imagen' => 'required|image|max:5192',
-        ], [
-            'imagen.required' => 'La imagen es obligatoria.',
-            'imagen.image' => 'El archivo debe ser una imagen.',
-            'imagen.max'   => 'La imagen no puede superar los 5MB.'
-        ]);
+        if ($usr['publicacion_count'] < $conf->limiteDePublicaciones) {
 
-        $pub = Publicacion::create([
-            'imagen' => $imagen,
-            'titulo' => $request->titulo,
-            'contenido' => $request->contenido,
-            'descripcion' => $request->descripcion,
-            'fk_autor' => $request->autor,
-            'fk_categoria' => $request->categoria,
-            'fecha' => $request->fecha
-        ]);
+            $imagen = $this->validate($request);
 
-        $pub->etiquetas()->sync($request->etiquetas);
+            $request->validate([
+                'imagen' => 'required|image|max:5192',
+            ], [
+                'imagen.required' => 'La imagen es obligatoria.',
+                'imagen.image' => 'El archivo debe ser una imagen.',
+                'imagen.max'   => 'La imagen no puede superar los 5MB.'
+            ]);
 
-        $pub = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas')->findOrFail($pub->id);
-        $coms = Comentario::with('usuario')->withCount('likes')->where('fk_publicacion', $pub->id)->paginate(10);
+            $pub = Publicacion::create([
+                'imagen' => $imagen,
+                'titulo' => $request->titulo,
+                'contenido' => $request->contenido,
+                'descripcion' => $request->descripcion,
+                'fk_autor' => $request->autor,
+                'fk_categoria' => $request->categoria,
+                'fecha' => $request->fecha
+            ]);
 
-        return view('publicacion.show', compact('pub', 'coms'));
+            $pub->etiquetas()->sync($request->etiquetas);
+
+            $pub = Publicacion::with('autor:nombre,id', 'categorias:nombre,id', 'etiquetas')->withCount('likes', 'guardadas')->findOrFail($pub->id);
+            $coms = Comentario::with('usuario')->withCount('likes')->where('fk_publicacion', $pub->id)->paginate(10);
+
+            return view('publicacion.show', compact('pub', 'coms'));
+        }
+        return back()->withErrors(['demasiado comentarios']);
     }
 
     public function destroy(int $id): RedirectResponse
@@ -200,5 +208,19 @@ class PublicacionController extends Controller
             $guardar->attach(['fk_autor' => $idUsuario]);
         }
         return back();
+    }
+
+    public function search(Request $request): View
+    {
+        $publicaciones = Publicacion::with('autor:nombre,id', 'categorias:nombre,id')->withCount('likes', 'guardadas', 'comentario');
+        $prompt = $request->prompt;
+
+        if ($prompt != null) {
+            $publicaciones = $publicaciones->whereLike('titulo', '%' . $prompt . '%');
+        }
+
+        $publicaciones = $publicaciones->paginate(18)->withQueryString();
+
+        return view('publicacion.search', compact('publicaciones'));
     }
 }

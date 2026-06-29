@@ -42,6 +42,11 @@
                 Categorías
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('publicacion.search') }}" role="button" aria-expanded="false">
+                Publicaciones
+              </a>
+            </li>
             @auth
                 @if(Auth::user()->hasRole(\App\Enums\Roles::Admin->value) || Auth::user()->hasRole(\App\Enums\Roles::Editor->value))
                     <li class="nav-item">
@@ -71,11 +76,14 @@
                     </li>
                 @endif
             @endauth
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control" type="search" placeholder="Buscar por palabras claves"
+                <li>
+           <form action="/publicacion/search" class="input-group" role="search">
+            <input class="form-control" type="search" placeholder="Buscar por palabras claves" name="prompt" value="{{old('search')}}"
               aria-label="Search" />
+            <input class="btn btn-outline-{{$color}}" type="submit" value="buscar">
           </form>
+        </li>
+          </ul>
             @if (!Auth::check())
               <div class="text-end ms-3 d-flex gap-2">
                 <a href="{{ route('auth.register') }}" class="btn btn-outline-{{ $color }}" role="button">Registrar</a>
