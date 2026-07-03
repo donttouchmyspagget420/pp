@@ -48,7 +48,7 @@
     <div class="mx-auto d-flex flex-column gap-3 justify-content-around align-items-center w-50">
         <label for="contenido">Contenido</label>
         <textarea id="contenido" name="contenido" required rows="20" class="w-100">
-                {!! $pub->contenido !!}
+                {{ $pub->contenido }}
         </textarea>
         <label for="descripcion">Descripcion</label>
         <textarea id="descripcion" name="descripcion" required rows="10" class="w-100">

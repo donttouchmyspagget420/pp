@@ -44,7 +44,7 @@
     <hr class="mt-5">
 
     <div class="mx-auto d-flex flex-column gap-3 justify-content-around align-items-center w-50">
-        {!! $pub->contenido !!}
+        {{ $pub->contenido }}
     </div>
 
     <hr class="mt-5">

@@ -8,7 +8,7 @@
             </p>
             <div class="d-flex gap-5">
               <div class="d-flex gap-2">
-                <a href="{{route('comentario.like',['idUsuario' => Auth::id() ?? 0, 'idComentario' => $com->id])}}" class="btn-icon">
+                <a href="{{route('comentario.like',[ 'idComentario' => $com->id])}}" class="btn-icon">
                   <figure>
                         @if(Auth::check() && Auth::user()->likeComentario->contains($com->id))
                             <img src="{{ asset('storage/svgs/heart-filled-'.$color.'.svg') }}" alt="heart" width="25">

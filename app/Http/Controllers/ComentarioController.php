@@ -14,9 +14,9 @@ class ComentarioController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
-        $usr = Usuario::findOrFail(Auth::id())->withCount('comentario');
+        $usr = Usuario::where('id', Auth::id())->withCount('comentario')->get();
         $conf = Configuracion::firstOrFail();
-        if ($usr['comentario_count'] < $conf->limiteDeComentarios) {
+        if ($usr[0]['comentario_count'] < $conf->limiteDeComentarios) {
             $data = $this->validate($request);
             Comentario::create($data);
             return back()->with('success', 'creado exitosamente');
@@ -88,8 +88,10 @@ class ComentarioController extends Controller
         return back()->withErrors(['No tiene permisos']);
     }
 
-    public function like(int $idUsuario, int $idComentario)
+    public function like(int $idComentario)
     {
+        $idUsuario = Auth::id();
+
         $like = Comentario::findOrFail($idComentario)->likes();
 
         $exists = $like->wherePivot('fk_autor', $idUsuario)->exists();

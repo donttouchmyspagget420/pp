@@ -83,10 +83,10 @@ class PublicacionController extends Controller
 
     public function store(Request $request)
     {
-        $usr = Usuario::findOrFail(Auth::id())->withCount('publicacion');
+        $usr = Usuario::where('id', Auth::id())->withCount('publicacion')->get();
         $conf = Configuracion::firstOrFail();
 
-        if ($usr['publicacion_count'] < $conf->limiteDePublicaciones) {
+        if ($usr[0]['publicacion_count'] < $conf->limiteDePublicaciones) {
 
             $imagen = $this->validate($request);
 
@@ -182,8 +182,10 @@ class PublicacionController extends Controller
         }
     }
 
-    public function like(int $idUsuario, int $idPublicacion): RedirectResponse
+    public function like(int $idPublicacion): RedirectResponse
     {
+        $idUsuario = Auth::id();
+
         $like = Publicacion::findOrFail($idPublicacion)->likes();
 
         $exists = $like->wherePivot('fk_autor', $idUsuario)->exists();
@@ -196,8 +198,10 @@ class PublicacionController extends Controller
         return back();
     }
 
-    public function bookmark(int $idUsuario, int $idPublicacion)
+    public function bookmark(int $idPublicacion)
     {
+        $idUsuario = Auth::id();
+
         $guardar = Publicacion::findOrFail($idPublicacion)->guardadas();
 
         $exists = $guardar->wherePivot('fk_autor', $idUsuario)->exists();

@@ -205,4 +205,22 @@ class UsuarioController extends Controller
             return null;
         }
     }
+
+    public function seguir(int $id): RedirectResponse
+    {
+        $seguir = Usuario::findOrFail(Auth::id())->siguiendo();
+
+        $exists = $seguir->wherePivot('fk_siguido', Auth::id())->exists();
+
+        if ((Auth::id() == $id)) {
+            return back();
+        }
+
+        if ($exists) {
+            $seguir->where('fk_siguido', $id)->detach();
+        } else {
+            $seguir->attach(['fk_siguido' => $id]);
+        }
+        return back();
+    }
 }

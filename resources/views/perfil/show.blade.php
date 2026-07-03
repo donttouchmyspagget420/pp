@@ -20,10 +20,15 @@
                         <p class="text-body-secondary">{{ $usr['siguiendo_count'] }}</p>
                     </div>
                     @auth
-                        @if(Auth::user()->id == $usr->id || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                        @if(Auth::id() == $usr->id || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
                             <a href="{{route('perfil.edit', $usr->id)}}" class="btn btn-outline-{{$color}}">Editar Perfil</a>
-                        @else
-                            <a href="" class="btn btn-outline-{{$color}}">Seguir</a>
+                        @endif
+                        @if(Auth::id() != $usr->id)
+                            @if(Auth::user()->siguiendo->contains($usr->id))
+                                <a href="{{route('usuario.seguir',$usr->id)}}" class="btn btn-{{$color}}">Dejar de Seguir</a>
+                            @else
+                                <a href="{{route('usuario.seguir',$usr->id)}}" class="btn btn-outline-{{$color}}">Seguir</a>
+                            @endif
                         @endif
                     @endauth
                 </article>
@@ -33,25 +38,25 @@
                         <article>
                             <h4>Informacción addicional:</h4>
                         </article>
-                        @if($usr->configUsuario->correoPublico || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                        @if($usr->configUsuario->correoPublico || (Auth::check() && Auth::user()->hasRole(\App\Enums\Roles::Admin->value)))
                             <div class="d-flex flex-column mt-3">
                                 <p class="fs-5 fw-bold">Correo Electrónico:</p>
                                 <p>{{ $usr->correo }}</p>
                             </div>
                         @endif
-                        @if($usr->configUsuario->ubicacionPublico || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                        @if($usr->configUsuario->ubicacionPublico || (Auth::check() && Auth::user()->hasRole(\App\Enums\Roles::Admin->value)))
                             <div class="d-flex flex-column mt-3">
                                 <p class="fs-5 fw-bold">Ubicación:</p>
                                 <p>{{ $usr->perfilUsuario->ubicacion }}</p>
                             </div>
                         @endif
-                        @if($usr->configUsuario->educacionPublico || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                        @if($usr->configUsuario->educacionPublico || (Auth::check() && Auth::user()->hasRole(\App\Enums\Roles::Admin->value)))
                             <div class="d-flex flex-column mt-3">
                                 <p class="fs-5 fw-bold">Educación:</p>
                                 <p>{{ $usr->perfilUsuario->educacion }}</p>
                             </div>
                         @endif
-                        @if($usr->configUsuario->telePublico || Auth::user()->hasRole(\App\Enums\Roles::Admin->value))
+                        @if($usr->configUsuario->telePublico || (Auth::check() && Auth::user()->hasRole(\App\Enums\Roles::Admin->value)))
                             <div class="d-flex flex-column mt-3">
                                 <p class="fs-5 fw-bold">Numero de telefono:</p>
                                 <p>{{ $usr->perfilUsuario->tele }}</p>

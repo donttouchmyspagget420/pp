@@ -13,13 +13,17 @@ class RoleMiddleware
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request,  Closure $next, string $roles): Response
+    public function handle(Request $request,  Closure $next, ...$roles): Response
     {
-        $roles = explode(',', $roles);
+        $i = 0;
         foreach ($roles as $rol) {
-            if (!$request->user()->hasRole($rol)) {
-                return redirect()->route('home')->with('error', 'No tiene bastante permisos');
+            if ($request->user()->hasRole($rol)) {
+                $i++;
             }
+        }
+
+        if ($i <= 0) {
+            return redirect()->route('home')->withErrors(['No tiene bastante permisos']);
         }
 
         return $next($request);

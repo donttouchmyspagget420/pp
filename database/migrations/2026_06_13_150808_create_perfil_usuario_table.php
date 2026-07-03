@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('perfil_usuarios', function (Blueprint $table) {
-            $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->cascadeOnDelete();
             $table->string('pfp');
             $table->string('ubicacion')->nullable();
             $table->string('educacion')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
         });
 
         Schema::create('config_usuarios', function (Blueprint $table) {
-            $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('fk_usuario')->unique()->constrained('usuarios', 'id')->onUpdate('cascade')->cascadeOnDelete();
             $table->enum('color', ColorAccente::cases());
             $table->boolean('correoPublico')->default(false);
             $table->boolean('ubicacionPublico')->default(false);

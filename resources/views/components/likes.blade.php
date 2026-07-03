@@ -1,5 +1,5 @@
                                     <div class="d-flex gap-3">
-                                        <a href="{{route('publicacion.like', ['idUsuario' => Auth::id() ?? 0,'idPublicacion' => $id])}}" class="btn-icon">
+                                        <a href="{{route('publicacion.like', ['idPublicacion' => $id])}}" class="btn-icon">
                                             <figure>
                                                 @if(Auth::check() && Auth::user()->likePublicacion->contains($id))
                                                     <img width="25" src="{{ asset('storage/svgs/heart-filled-'.$color.'.svg') }}" alt="heart">
