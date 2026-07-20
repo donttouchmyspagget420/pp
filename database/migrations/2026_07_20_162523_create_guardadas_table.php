@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publicaciones', function (Blueprint $table) {
-            $table->id();
-            $table->string('imagen');
-            $table->string('titulo');
-            $table->text('contenido');
-            $table->string('descripcion', 500);
+        Schema::create('guardadas', function (Blueprint $table) {
             $table->foreignId('fk_autor')->constrained('usuarios', 'id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('fk_categoria')->constrained('categorias', 'id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('fecha')->useCurrent();
+            $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unique(['fk_autor', 'fk_publicacion']);
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('publicaciones');
+        Schema::dropIfExists('guardadas');
     }
 };

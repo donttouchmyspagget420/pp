@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comentarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('contenido', 500);
-            $table->foreignId('fk_autor')->constrained('usuarios', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::create('etiquetas_publicaciones', function (Blueprint $table) {
             $table->foreignId('fk_publicacion')->constrained('publicaciones', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('fk_etiqueta')->constrained('etiquetas', 'id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unique(['fk_publicacion', 'fk_etiqueta']);
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('etiquetas_publicaciones');
     }
 };

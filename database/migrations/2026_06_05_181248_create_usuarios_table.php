@@ -11,11 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 20)->unique();
-        });
-
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('fk_rol')->constrained('roles', 'id')->cascadeOnUpdate()->cascadeOnDelete();
@@ -25,12 +20,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
         });
-
-        Schema::create('siguidores', function (Blueprint $table) {
-            $table->foreignId('fk_siguidor')->constrained('usuarios', 'id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('fk_siguido')->constrained('usuarios', 'id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->unique(['fk_siguidor', 'fk_siguido']);
-        });
     }
 
     /**
@@ -38,8 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
         Schema::dropIfExists('usuarios');
-        Schema::dropIfExists('siguidores');
     }
 };

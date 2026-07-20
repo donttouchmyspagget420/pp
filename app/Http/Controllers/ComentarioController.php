@@ -21,7 +21,7 @@ class ComentarioController extends Controller
             Comentario::create($data);
             return back()->with('success', 'creado exitosamente');
         }
-        return back()->withErrors(['demasiado comentarios']);
+        return back()->withErrors(['Has alcanzado el límite de comentarios permitidos(' . $conf->limiteDeComentarios . ')']);
     }
 
     public function edit(Request $request): RedirectResponse

@@ -72,7 +72,7 @@ class UsuarioController extends Controller
                 'username' => $request->username,
                 'nombre' => $request->nombre,
                 'correo' => $request->correo,
-                'password' => Hash::make($request->password),
+                'password' => $request->password ? $user->password : Hash::make($request->password),
                 'fk_rol' => Rol::where('nombre', $request->rol)->value('id'),
             ]);
 
@@ -118,7 +118,7 @@ class UsuarioController extends Controller
             'nombre' => ['required', 'string', 'max:100'],
             'username' => ['required', 'string', 'max:100', Rule::unique('usuarios', 'username')->ignore($request->id)],
             'correo' => ['required', 'email', 'max:255', Rule::unique('usuarios', 'correo')->ignore($request->id)],
-            'password' => ['required', 'string', 'max:255', 'confirmed'],
+            'password' => ['nullable', 'string', 'max:255', 'confirmed'],
 
             'color' => ['required', Rule::enum(ColorAccente::class)],
 
@@ -153,7 +153,6 @@ class UsuarioController extends Controller
             'correo.max' => 'El correo electrónico no puede superar los 255 caracteres.',
             'correo.unique' => 'Ese correo electrónico ya está registrado.',
 
-            'password.required' => 'La contraseña es obligatoria.',
             'password.string'   => 'La contraseña debe ser una cadena de texto.',
             'password.max'      => 'La contraseña no puede tener más de :max caracteres.',
             'password.confirmed' => 'El campo "contraseña" y su confirmación no coinciden.',

@@ -6,6 +6,7 @@
 
     <div class="d-flex align-items-center justify-content-center" >
       <form class="p-5 border" action="/auth/login" method="post">
+        @csrf
         <h1 class="text-center"><strong>Log In</strong></h1>
         <div class="input-group input-group-lg mt-5">
           <input type="email" class="form-control" placeholder="correo electrónico" name="correo">
