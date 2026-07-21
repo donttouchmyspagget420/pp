@@ -39,6 +39,11 @@ class ComentarioController extends Controller
         }
 
         $data = $this->validate($request);
+
+        if (Auth::id() == $request->fk_autor || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
+            return back()->withErrors(['No tiene permisos']);
+        }
+
         $request->validate(['id' => 'required|exists:comentarios,id'], [
             'id.required' => 'El id es obligatorio.',
             'id.exists' => 'El id seleccionado no existe.',
@@ -68,11 +73,7 @@ class ComentarioController extends Controller
             'contenido.max' => 'El contenido no puede superar los 500 caracteres.'
         ]);
 
-        if (Auth::id() == $request->fk_autor || Usuario::findOrFail(Auth::id())->hasRole(Roles::Admin->value)) {
-            return $data;
-        }
-
-        return back()->withErrors(['No tiene permisos']);
+        return $data;
     }
 
     public function destroy(int $id): RedirectResponse
